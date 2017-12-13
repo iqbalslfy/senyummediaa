@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import net.source.senyum.senyummediaa.R;
+
 import java.util.ArrayList;
 import java.util.List;
 

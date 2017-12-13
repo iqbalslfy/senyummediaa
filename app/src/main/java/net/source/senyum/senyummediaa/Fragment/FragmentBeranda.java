@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 
 import net.source.senyum.senyummediaa.Adapters.ViewPagerAdapter;
 import net.source.senyum.senyummediaa.Data.MenuItems;
-import net.source.senyum.senyummediaa.Data.MenuToko;
+import net.source.senyum.senyummediaa.Data.MenuStationery;
 import net.source.senyum.senyummediaa.R;
 import net.source.senyum.senyummediaa.RecyclerView.RecyclerViewAd_Toko;
 import net.source.senyum.senyummediaa.RecyclerView.RecyclerViewAdapter;
@@ -30,7 +30,7 @@ public class FragmentBeranda extends Fragment {
     private RecyclerViewAd_Toko viewAdapterToko;
     private RecyclerView.LayoutManager layoutManager, layoutManagerToko;
     private List<MenuItems> itemsList = new ArrayList<>();
-    private List<MenuToko> tokoList = new ArrayList<>();
+    private List<MenuStationery> tokoList = new ArrayList<>();
 
     private ViewPager viewPager;
     private Timer timer;
@@ -105,13 +105,26 @@ public class FragmentBeranda extends Fragment {
         timer.purge();
     }
 
+    private void runDataMenu() {
+
+        itemsList.add(new MenuItems("ANEKA AYAM"));
+        itemsList.add(new MenuItems("ANEKA BEBEK"));
+        itemsList.add(new MenuItems("PILIHAN EDITOR"));
+        itemsList.add(new MenuItems("ANEKA NASI"));
+        itemsList.add(new MenuItems("BAKMI"));
+        itemsList.add(new MenuItems("BAKSO"));
+        itemsList.add(new MenuItems("BURGER"));
+        itemsList.add(new MenuItems("SANDWICH"));
+        itemsList.add(new MenuItems("CHINESE"));
+
+    }
 
     private void runDataToko(){
-        tokoList.add(new MenuToko(R.drawable.daebak, "Daebak Cafe"));
-        tokoList.add(new MenuToko(R.drawable.kedai, "Kedai Cafe"));
-        tokoList.add(new MenuToko(R.drawable.pencake, "Pencake Cafe"));
-        tokoList.add(new MenuToko(R.drawable.pondok, "Pondok Cafe"));
-        tokoList.add(new MenuToko(R.drawable.layar, "Layar Cafe"));
+        tokoList.add(new MenuStationery(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
+        tokoList.add(new MenuStationery(R.drawable.kedai, "Kedai Cafe", "125.000","130.000"));
+        tokoList.add(new MenuStationery(R.drawable.pencake, "Pencake Cafe", "155.000","170.000"));
+        tokoList.add(new MenuStationery(R.drawable.pondok, "Pondok Cafe", "120.000","160.000"));
+        tokoList.add(new MenuStationery(R.drawable.layar, "Layar Cafe", "115.000","140.000"));
     }
 
 }

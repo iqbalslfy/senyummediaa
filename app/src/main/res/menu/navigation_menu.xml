@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/nav_home"
+        android:title="@string/home"
+        android:icon="@drawable/ic_home"
+
+        />
+
+    <item android:id="@+id/nav_kategori"
+        android:title="@string/kategori"
+        android:icon="@drawable/ic_kategori"
+
+        />
+
+    <item android:id="@+id/nav_rekomendasi"
+        android:title="@string/Telusuri"
+        android:icon="@drawable/ic_recomended"
+
+        />
+
+    <item android:id="@+id/nav_keranjang"
+        android:title="@string/Troli"
+        android:icon="@drawable/ic_troli"
+
+        />
+
+    <item android:id="@+id/nav_akun"
+        android:title="@string/AkunSaya"
+        android:icon="@drawable/ic_akun"
+
+        />
+
+
+</menu>

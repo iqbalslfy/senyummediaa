@@ -16,7 +16,7 @@ import net.source.senyum.senyummediaa.Data.MenuDataPromo;
 import net.source.senyum.senyummediaa.Data.MenuItems;
 import net.source.senyum.senyummediaa.Data.MenuStationery;
 import net.source.senyum.senyummediaa.R;
-import net.source.senyum.senyummediaa.RecyclerView.MenuItemRecyclerToko;
+import net.source.senyum.senyummediaa.RecyclerView.MenuStationeryRv;
 import net.source.senyum.senyummediaa.RecyclerView.MenuKertas;
 import net.source.senyum.senyummediaa.RecyclerView.MenuPeralatanKantor;
 import net.source.senyum.senyummediaa.RecyclerView.MenuPerlengkapanKantor;
@@ -33,7 +33,7 @@ public class FragmentBeranda extends Fragment {
     RecyclerView recyclerView, rvStationery, rvPeralatanKantor, rvPerlKantor, rvKertas, rvPromo;
     RecyclerViewAdapter viewAdapter;
 
-    MenuItemRecyclerToko viewAdapterToko;
+    MenuStationeryRv viewAdapterToko;
     MenuPeralatanKantor VAPeralatanKantor;
     MenuPerlengkapanKantor VAPerlengkapanKantor;
     MenuKertas VAKertas;
@@ -88,7 +88,7 @@ public class FragmentBeranda extends Fragment {
         rvPromo.setLayoutManager(layoutMenuPromo);
 
         viewAdapter = new RecyclerViewAdapter(itemsList);
-        viewAdapterToko = new MenuItemRecyclerToko(Menu);
+        viewAdapterToko = new MenuStationeryRv(Menu);
         VAPeralatanKantor = new MenuPeralatanKantor(Menu);
         VAPerlengkapanKantor = new MenuPerlengkapanKantor(Menu);
         VAKertas = new MenuKertas(Menu);

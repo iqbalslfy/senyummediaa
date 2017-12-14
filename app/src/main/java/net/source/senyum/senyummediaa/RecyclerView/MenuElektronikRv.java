@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import net.source.senyum.senyummediaa.Data.MenuStationery;
 import net.source.senyum.senyummediaa.R;
 
@@ -16,14 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by SONY on 31/10/2017.
+ * Created by SONY on 14/12/2017.
  */
 
-class RecyclerViewHolerToko extends RecyclerView.ViewHolder{
+
+class MenuElektronikViewHolder extends RecyclerView.ViewHolder{
     public ImageView imageView;
     public TextView textNamaToko,textHarga,textHargaSebPotongan;
 
-    public RecyclerViewHolerToko(View itemView) {
+    public MenuElektronikViewHolder(View itemView) {
         super(itemView);
         imageView = (ImageView)itemView.findViewById(R.id.img_toko);
         textNamaToko = (TextView)itemView.findViewById(R.id.txtNamaToko);
@@ -38,32 +38,30 @@ class RecyclerViewHolerToko extends RecyclerView.ViewHolder{
     }
 }
 
-public class MenuItemRecyclerToko extends RecyclerView.Adapter<RecyclerViewHolerToko>{
-    private List<MenuStationery> tokoList = new ArrayList<>();
+public class MenuElektronikRv extends RecyclerView.Adapter<MenuElektronikViewHolder>{
+    private List<MenuStationery> ListElektronik = new ArrayList<>();
 
-    public MenuItemRecyclerToko(List<MenuStationery> tokoList) {
-        this.tokoList = tokoList;
+    public MenuElektronikRv(List<MenuStationery> listElektronik) {
+        ListElektronik = listElektronik;
     }
 
     @Override
-    public RecyclerViewHolerToko onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MenuElektronikViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_toko, parent, false);
-        return new RecyclerViewHolerToko(view);
+        return new MenuElektronikViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerViewHolerToko holder, int position) {
-        holder.imageView.setImageResource(tokoList.get(position).getGambar());
-        holder.textNamaToko.setText(tokoList.get(position).getNama_toko());
-        holder.textHarga.setText(tokoList.get(position).getHarga());
-        holder.textHargaSebPotongan.setText(tokoList.get(position).getHargasebpotongan());
+    public void onBindViewHolder(MenuElektronikViewHolder holder, int position) {
+        holder.imageView.setImageResource(ListElektronik.get(position).getGambar());
+        holder.textNamaToko.setText(ListElektronik.get(position).getNama_toko());
+        holder.textHarga.setText(ListElektronik.get(position).getHarga());
+        holder.textHargaSebPotongan.setText(ListElektronik.get(position).getHargasebpotongan());
     }
 
     @Override
     public int getItemCount() {
-        return tokoList.size();
+        return ListElektronik.size();
     }
-
-
 }

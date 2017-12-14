@@ -32,14 +32,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToolbar = (Toolbar) findViewById(R.id.nav_action);
+        mToolbar = findViewById(R.id.nav_action);
+        viewPager = findViewById(R.id.viewpager);
+        tabLayout = findViewById(R.id.tabs);
+
+        setSupportActionBar(mToolbar);
         mToolbar.setTitle("Beranda");
-
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
-
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     private void setupViewPager(ViewPager viewPager){
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-    class ViewPagerAdapterTab extends FragmentPagerAdapter {
+    static class ViewPagerAdapterTab extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 

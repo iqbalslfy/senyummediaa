@@ -117,7 +117,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
-                        android:text="Rekomendasi Perlengkapan Kantor"
+                        android:text="Rekomendasi Peralatan Kantor"
                         android:textStyle="bold" />
 
                     <TextView
@@ -171,7 +171,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:layout_marginTop="5dp"
-                        android:text="Rekomendasi Cake"
+                        android:text="Rekomendasi Perlengkapan Kantor"
                         android:textStyle="bold" />
 
                     <TextView
@@ -193,7 +193,7 @@
                 </RelativeLayout>
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rc_menu_cake"
+                    android:id="@+id/rc_menu_perlengkapan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
@@ -247,7 +247,7 @@
                 </RelativeLayout>
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rc_menu_minuman"
+                    android:id="@+id/rc_menu_kertas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"

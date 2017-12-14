@@ -17,6 +17,7 @@ import net.source.senyum.senyummediaa.Data.MenuStationery;
 import net.source.senyum.senyummediaa.R;
 import net.source.senyum.senyummediaa.RecyclerView.MenuItemRecyclerToko;
 import net.source.senyum.senyummediaa.RecyclerView.MenuPeralatanKantor;
+import net.source.senyum.senyummediaa.RecyclerView.MenuPerlengkapanKantor;
 import net.source.senyum.senyummediaa.RecyclerView.RecyclerViewAdapter;
 
 import java.util.ArrayList;
@@ -26,13 +27,14 @@ import java.util.TimerTask;
 
 public class FragmentBeranda extends Fragment {
 
-    private RecyclerView recyclerView, recyclerViewToko, recyclerViewPeralatanKantor;
-    private RecyclerViewAdapter viewAdapter;
-    private MenuItemRecyclerToko viewAdapterToko;
-    private MenuPeralatanKantor VAPeralatanKantor;
-    private RecyclerView.LayoutManager layoutManager, layoutStationery, layoutperalatankantor;
-    private List<MenuItems> itemsList = new ArrayList<>();
-    private List<MenuStationery> Menu = new ArrayList<>();
+    RecyclerView recyclerView, rvStationery, rvPeralatanKantor, rvPerlKantor;
+    RecyclerViewAdapter viewAdapter;
+    MenuItemRecyclerToko viewAdapterToko;
+    MenuPeralatanKantor VAPeralatanKantor;
+    MenuPerlengkapanKantor VAPerlengkapanKantor;
+    RecyclerView.LayoutManager layoutManager, layoutStationery, layoutperalatankantor, layoutperlengkapankantor;
+    List<MenuItems> itemsList = new ArrayList<>();
+    List<MenuStationery> Menu = new ArrayList<>();
 
     private ViewPager viewPager;
     private Timer timer;
@@ -49,28 +51,34 @@ public class FragmentBeranda extends Fragment {
         Stationery();
 
         recyclerView = view.findViewById(R.id.rc_menu);
-        recyclerViewToko = view.findViewById(R.id.rc_menu_stationery);
-        recyclerViewPeralatanKantor = view.findViewById(R.id.rc_menu_peralatan_kantor);
+        rvStationery = view.findViewById(R.id.rc_menu_stationery);
+        rvPeralatanKantor = view.findViewById(R.id.rc_menu_peralatan_kantor);
+        rvPerlKantor = view.findViewById(R.id.rc_menu_perlengkapan);
 
         recyclerView.setHasFixedSize(true);
-        recyclerViewToko.setHasFixedSize(true);
-        recyclerViewPeralatanKantor.setHasFixedSize(true);
+        rvStationery.setHasFixedSize(true);
+        rvPeralatanKantor.setHasFixedSize(true);
+        rvPerlKantor.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         layoutStationery = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         layoutperalatankantor = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        layoutperlengkapankantor = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
-        recyclerViewToko.setLayoutManager(layoutStationery);
+        rvStationery.setLayoutManager(layoutStationery);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerViewPeralatanKantor.setLayoutManager(layoutperalatankantor);
+        rvPeralatanKantor.setLayoutManager(layoutperalatankantor);
+        rvPerlKantor.setLayoutManager(layoutperlengkapankantor);
 
         viewAdapter = new RecyclerViewAdapter(itemsList);
         viewAdapterToko = new MenuItemRecyclerToko(Menu);
         VAPeralatanKantor = new MenuPeralatanKantor(Menu);
+        VAPerlengkapanKantor = new MenuPerlengkapanKantor(Menu);
 
         recyclerView.setAdapter(viewAdapter);
-        recyclerViewToko.setAdapter(viewAdapterToko);
-        recyclerViewPeralatanKantor.setAdapter(VAPeralatanKantor);
+        rvStationery.setAdapter(viewAdapterToko);
+        rvPeralatanKantor.setAdapter(VAPeralatanKantor);
+        rvPerlKantor.setAdapter(VAPerlengkapanKantor);
 
         viewPager = view.findViewById(R.id.viewPagerHome);
 

@@ -1,17 +1,17 @@
 package net.source.senyum.senyummediaa.Data;
 
 /**
- * Created by SONY on 30/10/2017.
+ * Created by SONY on 14/12/2017.
  */
 
-public class MenuStationery {
+public class DataRT {
     private int Gambar;
     private String Nama_toko,harga,hargasebpotongan;
 
-    public MenuStationery() {
+    public DataRT() {
     }
 
-    public MenuStationery(int gambar, String nama_toko, String harga, String hargasebpotongan) {
+    public DataRT(int gambar, String nama_toko, String harga, String hargasebpotongan) {
         Gambar = gambar;
         Nama_toko = nama_toko;
         this.harga = harga;

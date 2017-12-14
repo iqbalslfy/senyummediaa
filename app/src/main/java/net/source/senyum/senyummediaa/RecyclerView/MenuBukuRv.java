@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import net.source.senyum.senyummediaa.Data.MenuStationery;
+import net.source.senyum.senyummediaa.Data.DataBuku;
+import net.source.senyum.senyummediaa.Data.DataStationery;
 import net.source.senyum.senyummediaa.R;
 
 import java.util.ArrayList;
@@ -19,8 +20,8 @@ import java.util.List;
  */
 
 class MenuBukuViewHolder extends RecyclerView.ViewHolder{
-    public ImageView imageView;
-    public TextView textNamaToko,textHarga,textHargaSebPotongan;
+     public ImageView imageView;
+     public TextView textNamaToko,textHarga,textHargaSebPotongan;
 
     public MenuBukuViewHolder(View itemView) {
         super(itemView);
@@ -36,11 +37,10 @@ class MenuBukuViewHolder extends RecyclerView.ViewHolder{
         price.setPaintFlags(price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
     }
 }
-
 public class MenuBukuRv extends RecyclerView.Adapter<MenuBukuViewHolder>{
-    private List<MenuStationery> ListBuku = new ArrayList<>();
+    private List<DataBuku> ListBuku = new ArrayList<>();
 
-    public MenuBukuRv(List<MenuStationery> listBuku) {
+    public MenuBukuRv(List<DataBuku> listBuku) {
         ListBuku = listBuku;
     }
 

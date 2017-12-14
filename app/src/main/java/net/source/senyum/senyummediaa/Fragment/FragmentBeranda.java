@@ -12,10 +12,19 @@ import android.view.ViewGroup;
 
 
 import net.source.senyum.senyummediaa.Adapters.ViewPagerAdapter;
-import net.source.senyum.senyummediaa.Data.MenuDataPromo;
+import net.source.senyum.senyummediaa.Data.DataBuku;
+import net.source.senyum.senyummediaa.Data.DataElektronik;
+import net.source.senyum.senyummediaa.Data.DataKertas;
+import net.source.senyum.senyummediaa.Data.DataPeralatanKantor;
+import net.source.senyum.senyummediaa.Data.DataPerlengkapanKantor;
+import net.source.senyum.senyummediaa.Data.DataPromo;
+import net.source.senyum.senyummediaa.Data.DataRT;
 import net.source.senyum.senyummediaa.Data.MenuItems;
-import net.source.senyum.senyummediaa.Data.MenuStationery;
+import net.source.senyum.senyummediaa.Data.DataStationery;
 import net.source.senyum.senyummediaa.R;
+import net.source.senyum.senyummediaa.RecyclerView.MenuBukuRv;
+import net.source.senyum.senyummediaa.RecyclerView.MenuElektronikRv;
+import net.source.senyum.senyummediaa.RecyclerView.MenuRumahTanggaRv;
 import net.source.senyum.senyummediaa.RecyclerView.MenuStationeryRv;
 import net.source.senyum.senyummediaa.RecyclerView.MenuKertas;
 import net.source.senyum.senyummediaa.RecyclerView.MenuPeralatanKantor;
@@ -30,19 +39,47 @@ import java.util.TimerTask;
 
 public class FragmentBeranda extends Fragment {
 
-    RecyclerView recyclerView, rvStationery, rvPeralatanKantor, rvPerlKantor, rvKertas, rvPromo;
+    RecyclerView recyclerView,
+            rvStationery,
+            rvPeralatanKantor,
+            rvPerlKantor,
+            rvKertas,
+            rvPromo,
+            rvElektronik,
+            rvBuku,
+            rvRumahTangga
+
+    ;
     RecyclerViewAdapter viewAdapter;
 
     MenuStationeryRv viewAdapterToko;
     MenuPeralatanKantor VAPeralatanKantor;
     MenuPerlengkapanKantor VAPerlengkapanKantor;
+    MenuElektronikRv VAElektronik;
+    MenuBukuRv VABuku;
+    MenuRumahTanggaRv VART;
     MenuKertas VAKertas;
     MenuPromo VAmenuPromo;
 
-    RecyclerView.LayoutManager layoutManager, layoutStationery, layoutperalatankantor, layoutperlengkapankantor, layoutKertas, layoutMenuPromo;
+    RecyclerView.LayoutManager layoutManager,
+            layoutStationery,
+            layoutperalatankantor,
+            layoutperlengkapankantor,
+            layoutKertas,
+            layoutMenuPromo,
+            layoutElektronik,
+            layoutBuku,
+            layoutRT;
+
     List<MenuItems> itemsList = new ArrayList<>();
-    List<MenuStationery> Menu = new ArrayList<>();
-    List<MenuDataPromo> DataPromo = new ArrayList<>();
+    List<DataStationery> MenuStationery = new ArrayList<>();
+    List<DataPeralatanKantor> MenuPeralatan = new ArrayList<>();
+    List<DataPerlengkapanKantor> MenuPerlengkapan = new ArrayList<>();
+    List<DataKertas> MenuKertas = new ArrayList<>();
+    List<DataElektronik> MenuElektronik = new ArrayList<>();
+    List<DataBuku> MenuBuku = new ArrayList<>();
+    List<DataRT> MenuRT = new ArrayList<>();
+    List<net.source.senyum.senyummediaa.Data.DataPromo> DataPromo = new ArrayList<>();
 
     private ViewPager viewPager;
     private Timer timer;
@@ -58,6 +95,12 @@ public class FragmentBeranda extends Fragment {
 
         Stationery();
         Promo();
+        Perlengkapan();
+        Peralatan();
+        Elektronik();
+        Buku();
+        RT();
+        Kertas();
 
         recyclerView = view.findViewById(R.id.rc_menu);
         rvStationery = view.findViewById(R.id.rc_menu_stationery);
@@ -65,6 +108,9 @@ public class FragmentBeranda extends Fragment {
         rvPerlKantor = view.findViewById(R.id.rc_menu_perlengkapan);
         rvKertas = view.findViewById(R.id.rc_menu_kertas);
         rvPromo = view.findViewById(R.id.rc_manue_promo);
+        rvElektronik = view.findViewById(R.id.rc_menu_elektronik);
+        rvBuku = view.findViewById(R.id.rc_menu_buku);
+        rvRumahTangga = view.findViewById(R.id.rc_menu_rt);
 
         recyclerView.setHasFixedSize(true);
         rvStationery.setHasFixedSize(true);
@@ -72,6 +118,9 @@ public class FragmentBeranda extends Fragment {
         rvPerlKantor.setHasFixedSize(true);
         rvKertas.setHasFixedSize(true);
         rvPromo.setHasFixedSize(true);
+        rvElektronik.setHasFixedSize(true);
+        rvBuku.setHasFixedSize(true);
+        rvRumahTangga.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         layoutStationery = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
@@ -79,6 +128,9 @@ public class FragmentBeranda extends Fragment {
         layoutperlengkapankantor = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         layoutKertas = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         layoutMenuPromo = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        layoutElektronik = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        layoutBuku = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        layoutRT = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
         rvStationery.setLayoutManager(layoutStationery);
         recyclerView.setLayoutManager(layoutManager);
@@ -86,13 +138,19 @@ public class FragmentBeranda extends Fragment {
         rvPerlKantor.setLayoutManager(layoutperlengkapankantor);
         rvKertas.setLayoutManager(layoutKertas);
         rvPromo.setLayoutManager(layoutMenuPromo);
+        rvElektronik.setLayoutManager(layoutElektronik);
+        rvBuku.setLayoutManager(layoutBuku);
+        rvRumahTangga.setLayoutManager(layoutRT);
 
         viewAdapter = new RecyclerViewAdapter(itemsList);
-        viewAdapterToko = new MenuStationeryRv(Menu);
-        VAPeralatanKantor = new MenuPeralatanKantor(Menu);
-        VAPerlengkapanKantor = new MenuPerlengkapanKantor(Menu);
-        VAKertas = new MenuKertas(Menu);
+        viewAdapterToko = new MenuStationeryRv(MenuStationery);
+        VAPeralatanKantor = new MenuPeralatanKantor(MenuPeralatan);
+        VAPerlengkapanKantor = new MenuPerlengkapanKantor(MenuPerlengkapan);
+        VAKertas = new MenuKertas(MenuKertas);
         VAmenuPromo = new MenuPromo(DataPromo);
+        VAElektronik = new MenuElektronikRv(MenuElektronik);
+        VABuku = new MenuBukuRv(MenuBuku);
+        VART = new MenuRumahTanggaRv(MenuRT);
 
         recyclerView.setAdapter(viewAdapter);
         rvStationery.setAdapter(viewAdapterToko);
@@ -100,6 +158,9 @@ public class FragmentBeranda extends Fragment {
         rvPerlKantor.setAdapter(VAPerlengkapanKantor);
         rvKertas.setAdapter(VAKertas);
         rvPromo.setAdapter(VAmenuPromo);
+        rvElektronik.setAdapter(VAElektronik);
+        rvBuku.setAdapter(VABuku);
+        rvRumahTangga.setAdapter(VART);
 
         viewPager = view.findViewById(R.id.viewPagerHome);
 
@@ -157,20 +218,68 @@ public class FragmentBeranda extends Fragment {
     }
 
     private void Stationery(){
-        Menu.add(new MenuStationery(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
-        Menu.add(new MenuStationery(R.drawable.kedai, "Kedai Cafe", "125.000","130.000"));
-        Menu.add(new MenuStationery(R.drawable.pencake, "Pencake Cafe", "155.000","170.000"));
-        Menu.add(new MenuStationery(R.drawable.pondok, "Pondok Cafe", "120.000","160.000"));
-        Menu.add(new MenuStationery(R.drawable.layar, "Layar Cafe", "115.000","140.000"));
+        MenuStationery.add(new DataStationery(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
+        MenuStationery.add(new DataStationery(R.drawable.kedai, "Kedai Cafe", "125.000","130.000"));
+        MenuStationery.add(new DataStationery(R.drawable.pencake, "Pencake Cafe", "155.000","170.000"));
+        MenuStationery.add(new DataStationery(R.drawable.pondok, "Pondok Cafe", "120.000","160.000"));
+        MenuStationery.add(new DataStationery(R.drawable.layar, "Layar Cafe", "115.000","140.000"));
+    }
+
+    private void Perlengkapan(){
+        MenuPerlengkapan.add(new DataPerlengkapanKantor(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
+        MenuPerlengkapan.add(new DataPerlengkapanKantor(R.drawable.kedai, "Kedai Cafe", "125.000","130.000"));
+        MenuPerlengkapan.add(new DataPerlengkapanKantor(R.drawable.pencake, "Pencake Cafe", "155.000","170.000"));
+        MenuPerlengkapan.add(new DataPerlengkapanKantor(R.drawable.pondok, "Pondok Cafe", "120.000","160.000"));
+        MenuPerlengkapan.add(new DataPerlengkapanKantor(R.drawable.layar, "Layar Cafe", "115.000","140.000"));
+    }
+
+    private void Peralatan(){
+        MenuPeralatan.add(new DataPeralatanKantor(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
+        MenuPeralatan.add(new DataPeralatanKantor(R.drawable.kedai, "Kedai Cafe", "125.000","130.000"));
+        MenuPeralatan.add(new DataPeralatanKantor(R.drawable.pencake, "Pencake Cafe", "155.000","170.000"));
+        MenuPeralatan.add(new DataPeralatanKantor(R.drawable.pondok, "Pondok Cafe", "120.000","160.000"));
+        MenuPeralatan.add(new DataPeralatanKantor(R.drawable.layar, "Layar Cafe", "115.000","140.000"));
+    }
+
+    private void Kertas(){
+        MenuKertas.add(new DataKertas(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
+        MenuKertas.add(new DataKertas(R.drawable.kedai, "Kedai Cafe", "125.000","130.000"));
+        MenuKertas.add(new DataKertas(R.drawable.pencake, "Pencake Cafe", "155.000","170.000"));
+        MenuKertas.add(new DataKertas(R.drawable.pondok, "Pondok Cafe", "120.000","160.000"));
+        MenuKertas.add(new DataKertas(R.drawable.layar, "Layar Cafe", "115.000","140.000"));
+    }
+
+    private void Elektronik(){
+        MenuElektronik.add(new DataElektronik(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
+        MenuElektronik.add(new DataElektronik(R.drawable.kedai, "Kedai Cafe", "125.000","130.000"));
+        MenuElektronik.add(new DataElektronik(R.drawable.pencake, "Pencake Cafe", "155.000","170.000"));
+        MenuElektronik.add(new DataElektronik(R.drawable.pondok, "Pondok Cafe", "120.000","160.000"));
+        MenuElektronik.add(new DataElektronik(R.drawable.layar, "Layar Cafe", "115.000","140.000"));
+    }
+
+    private void Buku(){
+        MenuBuku.add(new DataBuku(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
+        MenuBuku.add(new DataBuku(R.drawable.kedai, "Kedai Cafe", "125.000","130.000"));
+        MenuBuku.add(new DataBuku(R.drawable.pencake, "Pencake Cafe", "155.000","170.000"));
+        MenuBuku.add(new DataBuku(R.drawable.pondok, "Pondok Cafe", "120.000","160.000"));
+        MenuBuku.add(new DataBuku(R.drawable.layar, "Layar Cafe", "115.000","140.000"));
+    }
+
+    private void RT(){
+        MenuRT.add(new DataRT(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
+        MenuRT.add(new DataRT(R.drawable.kedai, "Kedai Cafe", "125.000","130.000"));
+        MenuRT.add(new DataRT(R.drawable.pencake, "Pencake Cafe", "155.000","170.000"));
+        MenuRT.add(new DataRT(R.drawable.pondok, "Pondok Cafe", "120.000","160.000"));
+        MenuRT.add(new DataRT(R.drawable.layar, "Layar Cafe", "115.000","140.000"));
     }
 
     private void Promo(){
-        DataPromo.add(new MenuDataPromo(R.drawable.slider1));
-        DataPromo.add(new MenuDataPromo(R.drawable.slider2));
-        DataPromo.add(new MenuDataPromo(R.drawable.slider3));
-        DataPromo.add(new MenuDataPromo(R.drawable.slider4));
-        DataPromo.add(new MenuDataPromo(R.drawable.slider5));
-        DataPromo.add(new MenuDataPromo(R.drawable.slider7));
+        DataPromo.add(new DataPromo(R.drawable.slider1));
+        DataPromo.add(new DataPromo(R.drawable.slider2));
+        DataPromo.add(new DataPromo(R.drawable.slider3));
+        DataPromo.add(new DataPromo(R.drawable.slider4));
+        DataPromo.add(new DataPromo(R.drawable.slider5));
+        DataPromo.add(new DataPromo(R.drawable.slider7));
     }
 
 

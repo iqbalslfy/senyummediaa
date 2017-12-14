@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import net.source.senyum.senyummediaa.Data.MenuStationery;
+import net.source.senyum.senyummediaa.Data.DataElektronik;
+import net.source.senyum.senyummediaa.Data.DataStationery;
 import net.source.senyum.senyummediaa.R;
 
 import java.util.ArrayList;
@@ -39,9 +40,9 @@ class MenuElektronikViewHolder extends RecyclerView.ViewHolder{
 }
 
 public class MenuElektronikRv extends RecyclerView.Adapter<MenuElektronikViewHolder>{
-    private List<MenuStationery> ListElektronik = new ArrayList<>();
+    private List<DataElektronik> ListElektronik = new ArrayList<>();
 
-    public MenuElektronikRv(List<MenuStationery> listElektronik) {
+    public MenuElektronikRv(List<DataElektronik> listElektronik) {
         ListElektronik = listElektronik;
     }
 

@@ -6,8 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import net.source.senyum.senyummediaa.Data.MenuDataPromo;
-import net.source.senyum.senyummediaa.Data.MenuStationery;
+import net.source.senyum.senyummediaa.Data.DataPromo;
 import net.source.senyum.senyummediaa.R;
 
 import java.util.ArrayList;
@@ -33,9 +32,9 @@ class MenuPromoHolder extends RecyclerView.ViewHolder{
 }
 
 public class MenuPromo extends RecyclerView.Adapter<MenuPromoHolder>{
-    private List<MenuDataPromo> ListGambar = new ArrayList<>();
+    private List<DataPromo> ListGambar = new ArrayList<>();
 
-    public MenuPromo(List<MenuDataPromo> listGambar) {
+    public MenuPromo(List<DataPromo> listGambar) {
         ListGambar = listGambar;
     }
 

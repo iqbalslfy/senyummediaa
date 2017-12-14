@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import net.source.senyum.senyummediaa.Data.MenuStationery;
+import net.source.senyum.senyummediaa.Data.DataStationery;
 import net.source.senyum.senyummediaa.R;
 
 import java.util.ArrayList;
@@ -39,9 +39,9 @@ class StationeryViewHolder extends RecyclerView.ViewHolder{
 }
 
 public class MenuStationeryRv extends RecyclerView.Adapter<StationeryViewHolder>{
-    private List<MenuStationery> tokoList = new ArrayList<>();
+    private List<DataStationery> tokoList = new ArrayList<>();
 
-    public MenuStationeryRv(List<MenuStationery> tokoList) {
+    public MenuStationeryRv(List<DataStationery> tokoList) {
         this.tokoList = tokoList;
     }
 

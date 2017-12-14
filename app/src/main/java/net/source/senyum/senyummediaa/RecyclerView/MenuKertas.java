@@ -8,7 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import net.source.senyum.senyummediaa.Data.MenuStationery;
+import net.source.senyum.senyummediaa.Data.DataKertas;
+import net.source.senyum.senyummediaa.Data.DataStationery;
 import net.source.senyum.senyummediaa.R;
 
 import java.util.ArrayList;
@@ -39,9 +40,9 @@ class MenuKertasHolder extends RecyclerView.ViewHolder{
 }
 
 public class MenuKertas extends RecyclerView.Adapter<MenuKertasHolder>{
-    private List<MenuStationery> ListKertas = new ArrayList<>();
+    private List<DataKertas> ListKertas = new ArrayList<>();
 
-    public MenuKertas(List<MenuStationery> listKertas) {
+    public MenuKertas(List<DataKertas> listKertas) {
         ListKertas = listKertas;
     }
 

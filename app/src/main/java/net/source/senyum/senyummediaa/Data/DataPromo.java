@@ -4,13 +4,13 @@ package net.source.senyum.senyummediaa.Data;
  * Created by SONY on 14/12/2017.
  */
 
-public class MenuDataPromo {
+public class DataPromo {
     private int IDGambarPromo;
 
-    public MenuDataPromo() {
+    public DataPromo() {
     }
 
-    public MenuDataPromo(int IDGambarPromo) {
+    public DataPromo(int IDGambarPromo) {
         this.IDGambarPromo = IDGambarPromo;
     }
 

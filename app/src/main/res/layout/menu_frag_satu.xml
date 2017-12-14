@@ -85,7 +85,7 @@
         </RelativeLayout>
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/rc_menu_toko"
+            android:id="@+id/rc_menu_stationery"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none"
@@ -139,7 +139,7 @@
                 </RelativeLayout>
 
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rc_menu_makanan"
+                    android:id="@+id/rc_menu_peralatan_kantor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="none"

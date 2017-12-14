@@ -38,10 +38,10 @@ class RecyclerViewHolerToko extends RecyclerView.ViewHolder{
     }
 }
 
-public class RecyclerViewAd_Toko extends RecyclerView.Adapter<RecyclerViewHolerToko>{
+public class MenuItemRecyclerToko extends RecyclerView.Adapter<RecyclerViewHolerToko>{
     private List<MenuStationery> tokoList = new ArrayList<>();
 
-    public RecyclerViewAd_Toko(List<MenuStationery> tokoList) {
+    public MenuItemRecyclerToko(List<MenuStationery> tokoList) {
         this.tokoList = tokoList;
     }
 

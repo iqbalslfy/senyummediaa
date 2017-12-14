@@ -15,7 +15,8 @@ import net.source.senyum.senyummediaa.Adapters.ViewPagerAdapter;
 import net.source.senyum.senyummediaa.Data.MenuItems;
 import net.source.senyum.senyummediaa.Data.MenuStationery;
 import net.source.senyum.senyummediaa.R;
-import net.source.senyum.senyummediaa.RecyclerView.RecyclerViewAd_Toko;
+import net.source.senyum.senyummediaa.RecyclerView.MenuItemRecyclerToko;
+import net.source.senyum.senyummediaa.RecyclerView.MenuPeralatanKantor;
 import net.source.senyum.senyummediaa.RecyclerView.RecyclerViewAdapter;
 
 import java.util.ArrayList;
@@ -25,12 +26,13 @@ import java.util.TimerTask;
 
 public class FragmentBeranda extends Fragment {
 
-    private RecyclerView recyclerView, recyclerViewToko;
+    private RecyclerView recyclerView, recyclerViewToko, recyclerViewPeralatanKantor;
     private RecyclerViewAdapter viewAdapter;
-    private RecyclerViewAd_Toko viewAdapterToko;
-    private RecyclerView.LayoutManager layoutManager, layoutManagerToko;
+    private MenuItemRecyclerToko viewAdapterToko;
+    private MenuPeralatanKantor VAPeralatanKantor;
+    private RecyclerView.LayoutManager layoutManager, layoutStationery, layoutperalatankantor;
     private List<MenuItems> itemsList = new ArrayList<>();
-    private List<MenuStationery> tokoList = new ArrayList<>();
+    private List<MenuStationery> Menu = new ArrayList<>();
 
     private ViewPager viewPager;
     private Timer timer;
@@ -44,25 +46,31 @@ public class FragmentBeranda extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beranda_tab, container,false);
 
-        runDataToko();
+        Stationery();
 
         recyclerView = view.findViewById(R.id.rc_menu);
-        recyclerViewToko = view.findViewById(R.id.rc_menu_toko);
+        recyclerViewToko = view.findViewById(R.id.rc_menu_stationery);
+        recyclerViewPeralatanKantor = view.findViewById(R.id.rc_menu_peralatan_kantor);
 
         recyclerView.setHasFixedSize(true);
         recyclerViewToko.setHasFixedSize(true);
+        recyclerViewPeralatanKantor.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        layoutManagerToko = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        layoutStationery = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        layoutperalatankantor = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
-        recyclerViewToko.setLayoutManager(layoutManagerToko);
+        recyclerViewToko.setLayoutManager(layoutStationery);
         recyclerView.setLayoutManager(layoutManager);
+        recyclerViewPeralatanKantor.setLayoutManager(layoutperalatankantor);
 
         viewAdapter = new RecyclerViewAdapter(itemsList);
-        viewAdapterToko = new RecyclerViewAd_Toko(tokoList);
+        viewAdapterToko = new MenuItemRecyclerToko(Menu);
+        VAPeralatanKantor = new MenuPeralatanKantor(Menu);
 
         recyclerView.setAdapter(viewAdapter);
         recyclerViewToko.setAdapter(viewAdapterToko);
+        recyclerViewPeralatanKantor.setAdapter(VAPeralatanKantor);
 
         viewPager = view.findViewById(R.id.viewPagerHome);
 
@@ -119,12 +127,14 @@ public class FragmentBeranda extends Fragment {
 
     }
 
-    private void runDataToko(){
-        tokoList.add(new MenuStationery(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
-        tokoList.add(new MenuStationery(R.drawable.kedai, "Kedai Cafe", "125.000","130.000"));
-        tokoList.add(new MenuStationery(R.drawable.pencake, "Pencake Cafe", "155.000","170.000"));
-        tokoList.add(new MenuStationery(R.drawable.pondok, "Pondok Cafe", "120.000","160.000"));
-        tokoList.add(new MenuStationery(R.drawable.layar, "Layar Cafe", "115.000","140.000"));
+    private void Stationery(){
+        Menu.add(new MenuStationery(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
+        Menu.add(new MenuStationery(R.drawable.kedai, "Kedai Cafe", "125.000","130.000"));
+        Menu.add(new MenuStationery(R.drawable.pencake, "Pencake Cafe", "155.000","170.000"));
+        Menu.add(new MenuStationery(R.drawable.pondok, "Pondok Cafe", "120.000","160.000"));
+        Menu.add(new MenuStationery(R.drawable.layar, "Layar Cafe", "115.000","140.000"));
     }
+
+
 
 }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -38,6 +39,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class FragmentBeranda extends Fragment {
+
+    GridLayoutManager gridLayoutStationery;
 
     RecyclerView recyclerView,
             rvStationery,
@@ -131,6 +134,11 @@ public class FragmentBeranda extends Fragment {
         layoutBuku = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         layoutRT = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
 
+
+//
+//        gridLayoutStationery = new GridLayoutManager(getContext(), 2);
+
+//
         rvStationery.setLayoutManager(layoutStationery);
         recyclerView.setLayoutManager(layoutManager);
         rvPeralatanKantor.setLayoutManager(layoutperalatankantor);

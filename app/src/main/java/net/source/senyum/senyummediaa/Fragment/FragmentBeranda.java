@@ -47,9 +47,8 @@ public class FragmentBeranda extends Fragment {
             rvPromo,
             rvElektronik,
             rvBuku,
-            rvRumahTangga
+            rvRumahTangga;
 
-    ;
     RecyclerViewAdapter viewAdapter;
 
     MenuStationeryRv viewAdapterToko;
@@ -143,14 +142,15 @@ public class FragmentBeranda extends Fragment {
         rvRumahTangga.setLayoutManager(layoutRT);
 
         viewAdapter = new RecyclerViewAdapter(itemsList);
-        viewAdapterToko = new MenuStationeryRv(MenuStationery);
-        VAPeralatanKantor = new MenuPeralatanKantor(MenuPeralatan);
-        VAPerlengkapanKantor = new MenuPerlengkapanKantor(MenuPerlengkapan);
-        VAKertas = new MenuKertas(MenuKertas);
-        VAmenuPromo = new MenuPromo(DataPromo);
-        VAElektronik = new MenuElektronikRv(MenuElektronik);
-        VABuku = new MenuBukuRv(MenuBuku);
-        VART = new MenuRumahTanggaRv(MenuRT);
+        viewAdapterToko = new MenuStationeryRv(MenuStationery, getContext());
+
+        VAPeralatanKantor = new MenuPeralatanKantor(MenuPeralatan, getContext());
+        VAPerlengkapanKantor = new MenuPerlengkapanKantor(MenuPerlengkapan, getContext());
+        VAKertas = new MenuKertas(MenuKertas, getContext());
+        VAmenuPromo = new MenuPromo(DataPromo, getContext());
+        VAElektronik = new MenuElektronikRv(MenuElektronik, getContext());
+        VABuku = new MenuBukuRv(MenuBuku, getContext());
+        VART = new MenuRumahTanggaRv(MenuRT, getContext());
 
         recyclerView.setAdapter(viewAdapter);
         rvStationery.setAdapter(viewAdapterToko);

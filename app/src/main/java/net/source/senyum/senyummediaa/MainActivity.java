@@ -1,5 +1,6 @@
 package net.source.senyum.senyummediaa;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,7 +9,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 
+import net.source.senyum.senyummediaa.Activity.BasketActivity;
 import net.source.senyum.senyummediaa.Fragment.FragmentBeranda;
 import net.source.senyum.senyummediaa.Fragment.FragmentBuku;
 import net.source.senyum.senyummediaa.Fragment.FragmentElektronik;
@@ -83,5 +88,24 @@ public class MainActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
         }
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.basket){
+            startActivity(new Intent(getApplicationContext(), BasketActivity.class));
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_basket, menu);
+
+        return true;
     }
 }

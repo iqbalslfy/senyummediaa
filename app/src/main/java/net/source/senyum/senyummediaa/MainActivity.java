@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
 
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
+        manager = getSupportFragmentManager();
+        transaction = manager.beginTransaction();
         transaction.replace(R.id.content, new FragmentHome()).commit();
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

@@ -87,7 +87,7 @@ public class FragmentBeranda extends Fragment {
     List<DataElektronik> MenuElektronik = new ArrayList<>();
     List<DataBuku> MenuBuku = new ArrayList<>();
     List<DataRT> MenuRT = new ArrayList<>();
-    List<net.source.senyum.senyummediaa.Data.DataPromo> DataPromo = new ArrayList<>();
+    List<DataPromo> DataPromo = new ArrayList<>();
 
     private ViewPager viewPager;
     private Timer timer;

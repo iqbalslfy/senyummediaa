@@ -1,10 +1,13 @@
 package net.source.senyum.senyummediaa;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,9 +17,12 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import net.source.senyum.senyummediaa.Activity.BasketActivity;
+import net.source.senyum.senyummediaa.Fragment.FragmentAkunSaya;
 import net.source.senyum.senyummediaa.Fragment.FragmentBeranda;
 import net.source.senyum.senyummediaa.Fragment.FragmentBuku;
 import net.source.senyum.senyummediaa.Fragment.FragmentElektronik;
+import net.source.senyum.senyummediaa.Fragment.FragmentHome;
+import net.source.senyum.senyummediaa.Fragment.FragmentKategori;
 import net.source.senyum.senyummediaa.Fragment.FragmentKertas;
 import net.source.senyum.senyummediaa.Fragment.FragmentPeralatanKantor;
 import net.source.senyum.senyummediaa.Fragment.FragmentPeralatanRT;
@@ -46,9 +52,37 @@ public class MainActivity extends AppCompatActivity {
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
 
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.content, new FragmentHome()).commit();
+        BottomNavigationView navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    private void setupViewPager(ViewPager viewPager){
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            switch (item.getItemId()) {
+                case R.id.nav_home:
+                    transaction.replace(R.id.content, new FragmentHome()).commit();
+                    return true;
+                case R.id.nav_kategori:
+                    transaction.replace(R.id.content, new FragmentBeranda()).commit();
+                    return true;
+                case R.id.nav_akun:
+                    transaction.replace(R.id.content, new FragmentAkunSaya()).commit();
+                    return true;
+            }
+            return false;
+        }
+
+    };
+
+    private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapterTab adapter = new ViewPagerAdapterTab(getSupportFragmentManager());
         adapter.addFrag(new FragmentBeranda(), "BERANDA");
         adapter.addFrag(new FragmentStationery(), "Stationery");
@@ -79,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             return mFragmentTitleList.size();
         }
 
-        public void addFrag (Fragment fragment, String title){
+        public void addFrag(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
@@ -95,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.basket){
+        if (id == R.id.basket) {
             startActivity(new Intent(getApplicationContext(), BasketActivity.class));
         }
 
@@ -108,4 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
+
+
+
 }

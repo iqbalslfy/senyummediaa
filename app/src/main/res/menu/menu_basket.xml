@@ -5,7 +5,7 @@
 
     <item android:id="@+id/basket"
         android:orderInCategory="100"
-        android:icon="@drawable/ic_basket"
+        android:icon="@drawable/ic_troli_white"
         app:showAsAction="ifRoom"
         tools:ignore="MenuTitle"
         />

@@ -35,22 +35,22 @@ public class FragmentHome extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //return inflater.inflate(R.layout.fragment_home, container, false );
-        View view = inflater.inflate(R.layout.fragment_home,container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         Toolbar toolbar = view.findViewById(R.id.toolbar_nav);
         toolbar.setTitle("Beranda");
 
-        viewPagerTab = (ViewPager) view.findViewById(R.id.viewpager);
-        setupViewPager(viewPagerTab);
-
-        tabLayout = (TabLayout) view.findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPagerTab);
+//        viewPagerTab = (ViewPager) view.findViewById(R.id.viewpager);
+//        setupViewPager(viewPagerTab);
+//
+//        tabLayout = (TabLayout) view.findViewById(R.id.tabs);
+//        tabLayout.setupWithViewPager(viewPagerTab);
 
 
         return view;
     }
 
-    private void setupViewPager(ViewPager viewPager){
+    private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapterTab adapter = new ViewPagerAdapterTab(getFragmentManager());
         adapter.addFrag(new FragmentBeranda(), "BERANDA");
         adapter.addFrag(new FragmentStationery(), "Stationery");
@@ -81,7 +81,7 @@ public class FragmentHome extends Fragment {
             return mFragmentTitleList.size();
         }
 
-        public void addFrag (Fragment fragment, String title){
+        public void addFrag(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }

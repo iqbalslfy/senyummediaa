@@ -24,15 +24,15 @@ import java.util.List;
  * Created by SONY on 14/12/2017.
  */
 
-class MenuBukuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
-     public ImageView imageView;
-     public TextView textNamaToko,textHarga,textHargaSebPotongan;
-     private ItemClickListener itemClickListener;
+class MenuBukuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public ImageView imageView;
+    public TextView textNamaToko, textHarga, textHargaSebPotongan;
+    private ItemClickListener itemClickListener;
 
     public MenuBukuViewHolder(View itemView) {
         super(itemView);
-        imageView = (ImageView)itemView.findViewById(R.id.img_toko);
-        textNamaToko = (TextView)itemView.findViewById(R.id.txtNamaToko);
+        imageView = (ImageView) itemView.findViewById(R.id.img_toko);
+        textNamaToko = (TextView) itemView.findViewById(R.id.txtNamaToko);
         textHarga = itemView.findViewById(R.id.txtHarga);
         textHargaSebPotongan = itemView.findViewById(R.id.txtHargaSebPotongan);
 
@@ -41,11 +41,11 @@ class MenuBukuViewHolder extends RecyclerView.ViewHolder implements View.OnClick
         strikeThroughText(textHargaSebPotongan);
     }
 
-    public void setItemClickListener(ItemClickListener itemClickListener){
+    public void setItemClickListener(ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 
-    private void strikeThroughText(TextView price){
+    private void strikeThroughText(TextView price) {
         price.setPaintFlags(price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
     }
 
@@ -59,7 +59,8 @@ class MenuBukuViewHolder extends RecyclerView.ViewHolder implements View.OnClick
         return false;
     }
 }
-public class MenuBukuRv extends RecyclerView.Adapter<MenuBukuViewHolder>{
+
+public class MenuBukuRv extends RecyclerView.Adapter<MenuBukuViewHolder> {
     private List<DataBuku> ListBuku = new ArrayList<>();
     Context context;
 
@@ -85,7 +86,7 @@ public class MenuBukuRv extends RecyclerView.Adapter<MenuBukuViewHolder>{
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int pos, boolean isLongClick) {
-                Toast.makeText(context, ""+ ListBuku.get(pos).getNama_toko(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "" + ListBuku.get(pos).getNama_toko(), Toast.LENGTH_SHORT).show();
                 context.startActivity(new Intent(context, Pemesanan.class));
             }
         });

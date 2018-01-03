@@ -37,6 +37,31 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private FragmentManager manager;
+    private FragmentTransaction transaction;
+
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+             manager = getSupportFragmentManager();
+             transaction = manager.beginTransaction();
+            switch (item.getItemId()) {
+                case R.id.nav_home:
+                    transaction.replace(R.id.content, new FragmentHome()).commit();
+                    return true;
+                case R.id.nav_kategori:
+                    transaction.replace(R.id.content, new FragmentBeranda()).commit();
+                    return true;
+                case R.id.nav_akun:
+                    transaction.replace(R.id.content, new FragmentAkunSaya()).commit();
+                    return true;
+            }
+            return false;
+        }
+
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,28 +84,7 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            FragmentManager manager = getSupportFragmentManager();
-            FragmentTransaction transaction = manager.beginTransaction();
-            switch (item.getItemId()) {
-                case R.id.nav_home:
-                    transaction.replace(R.id.content, new FragmentHome()).commit();
-                    return true;
-                case R.id.nav_kategori:
-                    transaction.replace(R.id.content, new FragmentBeranda()).commit();
-                    return true;
-                case R.id.nav_akun:
-                    transaction.replace(R.id.content, new FragmentAkunSaya()).commit();
-                    return true;
-            }
-            return false;
-        }
-
-    };
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapterTab adapter = new ViewPagerAdapterTab(getSupportFragmentManager());

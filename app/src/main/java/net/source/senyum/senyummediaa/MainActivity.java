@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-             manager = getSupportFragmentManager();
-             transaction = manager.beginTransaction();
+            manager = getSupportFragmentManager();
+            transaction = manager.beginTransaction();
             switch (item.getItemId()) {
                 case R.id.nav_home:
                     transaction.replace(R.id.content, new FragmentHome()).commit();
@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
-
 
 
     private void setupViewPager(ViewPager viewPager) {
@@ -128,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -146,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
-
 
 
 }

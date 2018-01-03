@@ -1,55 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout
-    android:layout_width="100dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp"
-    android:layout_margin="5dp"
-    android:id="@+id/relativelayout"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
 
     <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:id="@+id/relativelayout"
+        >
 
-        <ImageView
-            android:id="@+id/img_toko"
-            android:layout_width="190dp"
-            android:layout_height="131dp"
-            android:layout_gravity="center"
-            android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
-
-        <TextView
-            android:id="@+id/txtNamaToko"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="Nama Toko"
-            android:padding="5dp"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txtHarga"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="1000.000"
-            android:textAlignment="center"/>
+            <ImageView
+                android:id="@+id/img_toko"
+                android:layout_width="190dp"
+                android:layout_height="131dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher" />
 
-        <TextView
-            android:id="@+id/txtHargaSebPotongan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2000.000"
-            android:textAlignment="center"
+            <TextView
+                android:id="@+id/txtNamaToko"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Nama Toko"
+                android:padding="5dp"/>
 
-            />
-    </LinearLayout>
-</android.support.v7.widget.CardView>
+            <TextView
+                android:id="@+id/txtHarga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1000.000"
+                android:textAlignment="center"/>
 
+            <TextView
+                android:id="@+id/txtHargaSebPotongan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2000.000"
+                android:textAlignment="center"
+
+                />
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 </RelativeLayout>
 
 

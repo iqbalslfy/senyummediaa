@@ -10,13 +10,11 @@
     <item android:id="@+id/nav_kategori"
         android:title="@string/kategori"
         android:icon="@drawable/ic_kategori"
-
         />
 
     <item android:id="@+id/nav_akun"
         android:title="@string/AkunSaya"
         android:icon="@drawable/ic_akun"
-
         />
 
 

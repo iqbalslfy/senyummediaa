@@ -28,122 +28,71 @@ import net.source.senyum.senyummediaa.Fragment.FragmentPeralatanKantor;
 import net.source.senyum.senyummediaa.Fragment.FragmentPeralatanRT;
 import net.source.senyum.senyummediaa.Fragment.FragmentPerlengkapanKantor;
 import net.source.senyum.senyummediaa.Fragment.FragmentStationery;
+import net.source.senyum.senyummediaa.Fragment.FragmentTroli;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Toolbar mToolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
     private FragmentManager manager;
     private FragmentTransaction transaction;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            manager = getSupportFragmentManager();
-            transaction = manager.beginTransaction();
-            switch (item.getItemId()) {
-                case R.id.nav_home:
-                    transaction.replace(R.id.content, new FragmentHome()).commit();
-                    return true;
-                case R.id.nav_kategori:
-                    transaction.replace(R.id.content, new FragmentBeranda()).commit();
-                    return true;
-                case R.id.nav_akun:
-                    transaction.replace(R.id.content, new FragmentAkunSaya()).commit();
-                    return true;
-            }
-            return false;
-        }
-
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mToolbar = findViewById(R.id.nav_action);
-        viewPager = findViewById(R.id.viewpager);
-        tabLayout = findViewById(R.id.tabs);
-
-        setSupportActionBar(mToolbar);
-        mToolbar.setTitle("Beranda");
-        setupViewPager(viewPager);
-        tabLayout.setupWithViewPager(viewPager);
-
-        manager = getSupportFragmentManager();
-        transaction = manager.beginTransaction();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.content, new FragmentHome()).commit();
-        BottomNavigationView navigation = findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
     }
 
-
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapterTab adapter = new ViewPagerAdapterTab(getSupportFragmentManager());
-        adapter.addFrag(new FragmentBeranda(), "BERANDA");
-        adapter.addFrag(new FragmentStationery(), "Stationery");
-        adapter.addFrag(new FragmentPerlengkapanKantor(), "Perlengkapan Kantor");
-        adapter.addFrag(new FragmentPeralatanKantor(), "Peralatan Kantor");
-        adapter.addFrag(new FragmentKertas(), "Kertas");
-        adapter.addFrag(new FragmentElektronik(), "Elektronik");
-        adapter.addFrag(new FragmentBuku(), "Buku");
-        adapter.addFrag(new FragmentPeralatanRT(), "Peralatan Rumah Tangga");
-        viewPager.setAdapter(adapter);
-    }
-
-    static class ViewPagerAdapterTab extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        public ViewPagerAdapterTab(FragmentManager fm) {
-            super(fm);
-        }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            FragmentManager manager = getSupportFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            switch (item.getItemId()) {
+                case R.id.nav_home:
+                    transaction.replace(R.id.content, new FragmentHome()).commit();
+                    return true;
+                case R.id.nav_kategori:
+                    transaction.replace(R.id.content, new FragmentKategori()).commit();
+                    return true;
+                case R.id.nav_akun:
+                    transaction.replace(R.id.content, new FragmentAkunSaya()).commit();
+                    return true;
+            }
+            return true;
         }
 
-        @Override
-        public int getCount() {
-            return mFragmentTitleList.size();
-        }
+    };
 
-        public void addFrag(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == R.id.basket) {
-            startActivity(new Intent(getApplicationContext(), BasketActivity.class));
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_basket, menu);
-
-        return true;
-    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item_design_pencarian_populer) {
+//        int id = item_design_pencarian_populer.getItemId();
+//
+//        if (id == R.id.basket) {
+//            startActivity(new Intent(getApplicationContext(), BasketActivity.class));
+//        }
+//
+//        return super.onOptionsItemSelected(item_design_pencarian_populer);
+//    }
+//
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_basket, menu);
+//
+//        return true;
+//    }
 
 
 }

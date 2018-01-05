@@ -71,13 +71,12 @@ public class MenuPeralatanKantor extends RecyclerView.Adapter<MenuPeralatanKanto
     public MenuPeralatanKantorbHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_toko, parent, false);
-
         return new MenuPeralatanKantorbHolder(view);
 
     }
 
     @Override
-    public void onBindViewHolder(MenuPeralatanKantorbHolder holder, int position) {
+    public void onBindViewHolder(final MenuPeralatanKantorbHolder holder, int position) {
         holder.imageView.setImageResource(menuPeralatan.get(position).getGambar());
         holder.textNamaToko.setText(menuPeralatan.get(position).getNama_toko());
         holder.textHarga.setText(menuPeralatan.get(position).getHarga());

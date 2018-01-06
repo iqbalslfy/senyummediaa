@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -16,8 +17,12 @@ import android.widget.LinearLayout;
 
 
 import net.source.senyum.senyummediaa.Adapters.ViewPagerAdapter;
+import net.source.senyum.senyummediaa.Data.DataBrand;
+import net.source.senyum.senyummediaa.Data.DataFlashSale;
 import net.source.senyum.senyummediaa.Data.DataItemPopuler;
 import net.source.senyum.senyummediaa.R;
+import net.source.senyum.senyummediaa.RecyclerView.MenuBrand;
+import net.source.senyum.senyummediaa.RecyclerView.MenuFlashSale;
 import net.source.senyum.senyummediaa.RecyclerView.MenuPencarianPopuler;
 
 import java.util.ArrayList;
@@ -34,11 +39,20 @@ public class FragmentHome extends Fragment {
     private int dotcounts;
     private ImageView[] dots;
 
-    RecyclerView rvPopuler;
-    MenuPencarianPopuler pencarianPopulerAdapter;
-    RecyclerView.LayoutManager layoutManager;
-    List<DataItemPopuler> itemPopulers = new ArrayList<DataItemPopuler>();
+    RecyclerView rvPopuler,rvFlashSale,
+    rvBrand;
 
+    MenuPencarianPopuler menuPencarianPopuler;
+    MenuFlashSale menuFlashSale;
+    MenuBrand menuBrand;
+
+    RecyclerView.LayoutManager layoutManagerPopuler, layoutManagerFlashSale;
+
+    GridLayoutManager gridlayoutBRAND;
+
+    List<DataItemPopuler> itemPopulers = new ArrayList<DataItemPopuler>();
+    List<DataFlashSale> itemFlashSale = new ArrayList<>();
+    List<DataBrand> itemBrand = new ArrayList<>();
 
     public FragmentHome() {
     }
@@ -55,12 +69,33 @@ public class FragmentHome extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         initData();
+        flashSale();
+        brand();
+
         rvPopuler = view.findViewById(R.id.rv_pencarian_populer);
         rvPopuler.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        rvPopuler.setLayoutManager(layoutManager);
-        pencarianPopulerAdapter = new MenuPencarianPopuler(itemPopulers, getContext());
-        rvPopuler.setAdapter(pencarianPopulerAdapter);
+
+        rvFlashSale = view.findViewById(R.id.rv_flash_sale);
+        rvPopuler.setHasFixedSize(true);
+
+        rvBrand = view.findViewById(R.id.rv_brand);
+        rvBrand.setHasFixedSize(true);
+
+        layoutManagerPopuler = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        layoutManagerFlashSale = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        gridlayoutBRAND = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+
+        rvPopuler.setLayoutManager(layoutManagerPopuler);
+        menuPencarianPopuler = new MenuPencarianPopuler(itemPopulers, getContext());
+        rvPopuler.setAdapter(menuPencarianPopuler);
+
+        rvFlashSale.setLayoutManager(layoutManagerFlashSale);
+        menuFlashSale = new MenuFlashSale(itemFlashSale, getContext());
+        rvFlashSale.setAdapter(menuFlashSale);
+
+        rvBrand.setLayoutManager(gridlayoutBRAND);
+        menuBrand = new MenuBrand(itemBrand, getContext());
+        rvBrand.setAdapter(menuBrand);
 
 
         mToolbar = view.findViewById(R.id.nav_action);
@@ -111,6 +146,26 @@ public class FragmentHome extends Fragment {
 
 
         return view;
+    }
+
+    private void brand() {
+        itemBrand.add(new DataBrand(R.drawable.naci));
+        itemBrand.add(new DataBrand(R.drawable.imtec));
+        itemBrand.add(new DataBrand(R.drawable.sidu));
+        itemBrand.add(new DataBrand(R.drawable.etona));
+        itemBrand.add(new DataBrand(R.drawable.parker));
+        itemBrand.add(new DataBrand(R.drawable.zebra));
+        itemBrand.add(new DataBrand(R.drawable.kangaro));
+        itemBrand.add(new DataBrand(R.drawable.imco));
+    }
+
+    private void flashSale() {
+        itemFlashSale.add(new DataFlashSale(R.drawable.snowman, "1,000,000"));
+        itemFlashSale.add(new DataFlashSale(R.drawable.blueprint, "2,000,000"));
+        itemFlashSale.add(new DataFlashSale(R.drawable.daebak, "3,000,000"));
+        itemFlashSale.add(new DataFlashSale(R.drawable.deli, "4,000,000"));
+        itemFlashSale.add(new DataFlashSale(R.drawable.e_print, "5,000,000"));
+
     }
 
     private void initData() {

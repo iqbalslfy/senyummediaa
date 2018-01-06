@@ -20,8 +20,9 @@
         <activity android:name=".Activity.Pemesanan" />
         <activity android:name=".Activity.PromoActivity" />
         <activity android:name=".Activity.BrandActivity" />
-        <activity android:name=".Activity.Main2Activity"></activity>
-        <activity android:name=".Activity.PencarianActivity"></activity>
+        <activity android:name=".Activity.Main2Activity" />
+        <activity android:name=".Activity.PencarianActivity" />
+        <activity android:name=".Activity.FlashSaleActivity"></activity>
     </application>
 
 </manifest>

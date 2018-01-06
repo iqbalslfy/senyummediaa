@@ -9,4 +9,6 @@
     <string name="brand">Brand</string>
     <string name="lihatlainnya">Lihat Lainnya</string>
     <string name="pencarian">PENCARIAN POPULER</string>
+    <string name="flash_sale_txt">FLASH SALE</string>
+    <string name="populer_produk">POPULER PRODUK</string>
 </resources>

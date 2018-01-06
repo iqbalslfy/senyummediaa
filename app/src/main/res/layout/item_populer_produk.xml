@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="5dp">
+
+    <ImageView
+        android:id="@+id/imgPopulerProduk"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:src="@drawable/snowman"/>
+    <TextView
+        android:id="@+id/txtJudulPopuler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/Troli"/>
+    <TextView
+        android:id="@+id/txtHargaPopuler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="1,000,000"/>
+</LinearLayout>

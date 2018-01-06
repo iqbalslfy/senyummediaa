@@ -5,9 +5,9 @@ package net.source.senyum.senyummediaa.Data;
  */
 
 public class DataPopulerProduk {
-    private int ImgProduk;
-    private String txtJudul;
-    private String txtHarga;
+    public int ImgProduk;
+    public String txtJudul;
+    public String txtHarga;
 
     public DataPopulerProduk() {
     }

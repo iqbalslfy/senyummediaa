@@ -20,10 +20,12 @@ import net.source.senyum.senyummediaa.Adapters.ViewPagerAdapter;
 import net.source.senyum.senyummediaa.Data.DataBrand;
 import net.source.senyum.senyummediaa.Data.DataFlashSale;
 import net.source.senyum.senyummediaa.Data.DataItemPopuler;
+import net.source.senyum.senyummediaa.Data.DataPopulerProduk;
 import net.source.senyum.senyummediaa.R;
 import net.source.senyum.senyummediaa.RecyclerView.MenuBrand;
 import net.source.senyum.senyummediaa.RecyclerView.MenuFlashSale;
 import net.source.senyum.senyummediaa.RecyclerView.MenuPencarianPopuler;
+import net.source.senyum.senyummediaa.RecyclerView.MenuPopulerProduk;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,20 +41,24 @@ public class FragmentHome extends Fragment {
     private int dotcounts;
     private ImageView[] dots;
 
-    RecyclerView rvPopuler,rvFlashSale,
-    rvBrand;
+    RecyclerView rvPencarianPopuler,
+            rvFlashSale,
+            rvBrand,
+            rvPopuler;
 
     MenuPencarianPopuler menuPencarianPopuler;
     MenuFlashSale menuFlashSale;
     MenuBrand menuBrand;
+    MenuPopulerProduk populerProduk;
 
-    RecyclerView.LayoutManager layoutManagerPopuler, layoutManagerFlashSale;
+    RecyclerView.LayoutManager layoutManagerPencarianPopuler, layoutManagerFlashSale, layoutManagerPopulerProduk;
 
     GridLayoutManager gridlayoutBRAND;
 
-    List<DataItemPopuler> itemPopulers = new ArrayList<DataItemPopuler>();
+    List<DataItemPopuler> itemPopulers = new ArrayList<>();
     List<DataFlashSale> itemFlashSale = new ArrayList<>();
     List<DataBrand> itemBrand = new ArrayList<>();
+    List<DataPopulerProduk> itemPopulerProduk = new ArrayList<>();
 
     public FragmentHome() {
     }
@@ -71,31 +77,41 @@ public class FragmentHome extends Fragment {
         initData();
         flashSale();
         brand();
+        populerProduks();
 
-        rvPopuler = view.findViewById(R.id.rv_pencarian_populer);
-        rvPopuler.setHasFixedSize(true);
+        rvPencarianPopuler = view.findViewById(R.id.rv_pencarian_populer);
+        rvPencarianPopuler.setHasFixedSize(true);
 
         rvFlashSale = view.findViewById(R.id.rv_flash_sale);
-        rvPopuler.setHasFixedSize(true);
+        rvFlashSale.setHasFixedSize(true);
 
         rvBrand = view.findViewById(R.id.rv_brand);
         rvBrand.setHasFixedSize(true);
 
-        layoutManagerPopuler = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        layoutManagerFlashSale = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        gridlayoutBRAND = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+        rvPopuler = view.findViewById(R.id.rv_populer);
+        rvPopuler.setHasFixedSize(true);
 
-        rvPopuler.setLayoutManager(layoutManagerPopuler);
+        layoutManagerFlashSale = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        layoutManagerPopulerProduk = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        gridlayoutBRAND = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+        layoutManagerPencarianPopuler = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+
+        rvPencarianPopuler.setLayoutManager(layoutManagerPencarianPopuler);
         menuPencarianPopuler = new MenuPencarianPopuler(itemPopulers, getContext());
-        rvPopuler.setAdapter(menuPencarianPopuler);
+        rvPencarianPopuler.setAdapter(menuPencarianPopuler);
 
         rvFlashSale.setLayoutManager(layoutManagerFlashSale);
         menuFlashSale = new MenuFlashSale(itemFlashSale, getContext());
         rvFlashSale.setAdapter(menuFlashSale);
 
+
         rvBrand.setLayoutManager(gridlayoutBRAND);
         menuBrand = new MenuBrand(itemBrand, getContext());
         rvBrand.setAdapter(menuBrand);
+
+        rvPopuler.setLayoutManager(layoutManagerPopulerProduk);
+        populerProduk = new MenuPopulerProduk(itemPopulerProduk, getContext());
+        rvPopuler.setAdapter(populerProduk);
 
 
         mToolbar = view.findViewById(R.id.nav_action);
@@ -146,6 +162,16 @@ public class FragmentHome extends Fragment {
 
 
         return view;
+    }
+
+    private void populerProduks() {
+        itemPopulerProduk.add(new DataPopulerProduk(R.drawable.blueprint, "Judul", "1,500,000"));
+        itemPopulerProduk.add(new DataPopulerProduk(R.drawable.daebak, "Judul", "2,500,000"));
+        itemPopulerProduk.add(new DataPopulerProduk(R.drawable.deli, "Judul", "3,500,000"));
+        itemPopulerProduk.add(new DataPopulerProduk(R.drawable.etona, "Judul", "4,500,000"));
+        itemPopulerProduk.add(new DataPopulerProduk(R.drawable.zebra, "Judul", "5,500,000"));
+        itemPopulerProduk.add(new DataPopulerProduk(R.drawable.imtec, "Judul", "6,500,000"));
+        itemPopulerProduk.add(new DataPopulerProduk(R.drawable.layar, "Judul", "7,500,000"));
     }
 
     private void brand() {

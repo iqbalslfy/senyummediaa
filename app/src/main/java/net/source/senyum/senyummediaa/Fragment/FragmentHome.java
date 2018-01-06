@@ -20,10 +20,12 @@ import net.source.senyum.senyummediaa.Adapters.ViewPagerAdapter;
 import net.source.senyum.senyummediaa.Data.DataBrand;
 import net.source.senyum.senyummediaa.Data.DataFlashSale;
 import net.source.senyum.senyummediaa.Data.DataItemPopuler;
+import net.source.senyum.senyummediaa.Data.DataKategori;
 import net.source.senyum.senyummediaa.Data.DataPopulerProduk;
 import net.source.senyum.senyummediaa.R;
 import net.source.senyum.senyummediaa.RecyclerView.MenuBrand;
 import net.source.senyum.senyummediaa.RecyclerView.MenuFlashSale;
+import net.source.senyum.senyummediaa.RecyclerView.MenuKategori;
 import net.source.senyum.senyummediaa.RecyclerView.MenuPencarianPopuler;
 import net.source.senyum.senyummediaa.RecyclerView.MenuPopulerProduk;
 
@@ -44,21 +46,24 @@ public class FragmentHome extends Fragment {
     RecyclerView rvPencarianPopuler,
             rvFlashSale,
             rvBrand,
-            rvPopuler;
+            rvPopuler,
+            rvKategori;
 
     MenuPencarianPopuler menuPencarianPopuler;
     MenuFlashSale menuFlashSale;
     MenuBrand menuBrand;
     MenuPopulerProduk populerProduk;
+    MenuKategori menuKategori;
 
     RecyclerView.LayoutManager layoutManagerPencarianPopuler, layoutManagerFlashSale, layoutManagerPopulerProduk;
 
-    GridLayoutManager gridlayoutBRAND;
+    GridLayoutManager gridlayoutBRAND, gridlayoutKategori;
 
     List<DataItemPopuler> itemPopulers = new ArrayList<>();
     List<DataFlashSale> itemFlashSale = new ArrayList<>();
     List<DataBrand> itemBrand = new ArrayList<>();
     List<DataPopulerProduk> itemPopulerProduk = new ArrayList<>();
+    List<DataKategori> itemKategori = new ArrayList<>();
 
     public FragmentHome() {
     }
@@ -78,6 +83,7 @@ public class FragmentHome extends Fragment {
         flashSale();
         brand();
         populerProduks();
+        kategori();
 
         rvPencarianPopuler = view.findViewById(R.id.rv_pencarian_populer);
         rvPencarianPopuler.setHasFixedSize(true);
@@ -91,10 +97,14 @@ public class FragmentHome extends Fragment {
         rvPopuler = view.findViewById(R.id.rv_populer);
         rvPopuler.setHasFixedSize(true);
 
+        rvKategori = view.findViewById(R.id.rv_kategori);
+        rvKategori.setHasFixedSize(true);
+
         layoutManagerFlashSale = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         layoutManagerPopulerProduk = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        gridlayoutBRAND = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
         layoutManagerPencarianPopuler = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        gridlayoutBRAND = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+        gridlayoutKategori = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
 
         rvPencarianPopuler.setLayoutManager(layoutManagerPencarianPopuler);
         menuPencarianPopuler = new MenuPencarianPopuler(itemPopulers, getContext());
@@ -104,7 +114,6 @@ public class FragmentHome extends Fragment {
         menuFlashSale = new MenuFlashSale(itemFlashSale, getContext());
         rvFlashSale.setAdapter(menuFlashSale);
 
-
         rvBrand.setLayoutManager(gridlayoutBRAND);
         menuBrand = new MenuBrand(itemBrand, getContext());
         rvBrand.setAdapter(menuBrand);
@@ -113,6 +122,9 @@ public class FragmentHome extends Fragment {
         populerProduk = new MenuPopulerProduk(itemPopulerProduk, getContext());
         rvPopuler.setAdapter(populerProduk);
 
+        rvKategori.setLayoutManager(gridlayoutKategori);
+        menuKategori = new MenuKategori(itemKategori, getContext());
+        rvKategori.setAdapter(menuKategori);
 
         mToolbar = view.findViewById(R.id.nav_action);
         viewpagerSlider = view.findViewById(R.id.viewPagerHome);
@@ -162,6 +174,16 @@ public class FragmentHome extends Fragment {
 
 
         return view;
+    }
+
+    private void kategori() {
+        itemKategori.add(new DataKategori(R.drawable.blueprint, "Stationery"));
+        itemKategori.add(new DataKategori(R.drawable.daebak, "Perlengkapan \n Kantor"));
+        itemKategori.add(new DataKategori(R.drawable.deli, "Peralatan \n Kantor"));
+        itemKategori.add(new DataKategori(R.drawable.etona, "Kertas"));
+        itemKategori.add(new DataKategori(R.drawable.imco, "Elektronik"));
+        itemKategori.add(new DataKategori(R.drawable.zebra, "Buku"));
+        itemKategori.add(new DataKategori(R.drawable.snowman, "Perlengkapan \n Rumah Tangga"));
     }
 
     private void populerProduks() {

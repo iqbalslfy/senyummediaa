@@ -101,6 +101,16 @@ public class FragmentStationery extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_stationery, container, false);
 
+        Stationery();
+        Promo();
+        Perlengkapan();
+//        Peralatan();
+//        Elektronik();
+//        Buku();
+//        RT();
+//        Kertas();
+//        Brands();
+
         rvBrands = view.findViewById(R.id.rc_menu);
         rvStationery = view.findViewById(R.id.rc_menu_stationery);
         rvPeralatanKantor = view.findViewById(R.id.rc_menu_peralatan_kantor);
@@ -112,15 +122,6 @@ public class FragmentStationery extends Fragment {
         rvRumahTangga = view.findViewById(R.id.rc_menu_rt);
         viewpagerSlider = view.findViewById(R.id.viewPagerHome);
 
-        Stationery();
-        Promo();
-        Perlengkapan();
-        Peralatan();
-        Elektronik();
-        Buku();
-        RT();
-        Kertas();
-        Brands();
 
         rvBrands.setHasFixedSize(true);
         rvStationery.setHasFixedSize(true);

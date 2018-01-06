@@ -22,7 +22,14 @@
         <activity android:name=".Activity.BrandActivity" />
         <activity android:name=".Activity.Main2Activity" />
         <activity android:name=".Activity.PencarianActivity" />
-        <activity android:name=".Activity.FlashSaleActivity"></activity>
+        <activity android:name=".Activity.FlashSaleActivity" />
+        <activity android:name=".Kategori.StationeryActivity" />
+        <activity android:name=".Kategori.PerlengkapanKantorActivity" />
+        <activity android:name=".Kategori.PeralatanKantorActivity" />
+        <activity android:name=".Kategori.KertasActivity" />
+        <activity android:name=".Kategori.ElektronikActivity" />
+        <activity android:name=".Kategori.BukuActivity" />
+        <activity android:name=".Kategori.PeralatanRumahTangga"></activity>
     </application>
 
 </manifest>

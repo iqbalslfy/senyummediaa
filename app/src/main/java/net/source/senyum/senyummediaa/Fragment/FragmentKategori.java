@@ -48,6 +48,7 @@ public class FragmentKategori extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapterTab adapter = new ViewPagerAdapterTab(getFragmentManager());
+
         adapter.addFrag(new FragmentStationery(), "Stationery");
         adapter.addFrag(new FragmentPerlengkapanKantor(), "Perlengkapan Kantor");
         adapter.addFrag(new FragmentPeralatanKantor(), "Peralatan Kantor");

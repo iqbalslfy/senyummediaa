@@ -10,11 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Activity.BasketActivity" />
         <activity android:name=".Activity.Pemesanan" />
@@ -29,6 +25,17 @@
         <activity android:name=".Kategori.ElektronikActivity" />
         <activity android:name=".Kategori.BukuActivity" />
         <activity android:name=".Kategori.PeralatanRumahTangga" />
+        <activity
+            android:name=".Fragment.FragmentExample"
+            android:label="@string/title_activity_fragment_example"
+            android:theme="@style/AppTheme">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

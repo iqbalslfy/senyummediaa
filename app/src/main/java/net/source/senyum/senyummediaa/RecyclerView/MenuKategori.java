@@ -57,7 +57,7 @@ class KategoriHolder extends RecyclerView.ViewHolder implements View.OnClickList
     }
 }
 
-public class MenuKategori extends RecyclerView.Adapter<KategoriHolder>{
+public class MenuKategori extends RecyclerView.Adapter<KategoriHolder> {
     private List<DataKategori> listKategori = new ArrayList<>();
     private Context context;
 
@@ -81,30 +81,31 @@ public class MenuKategori extends RecyclerView.Adapter<KategoriHolder>{
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int pos, boolean isLongClick) {
-                if (pos == 0){
+                if (pos == 0) {
                     context.startActivity(new Intent(context, StationeryActivity.class));
                 }
-                if (pos == 1){
+
+                if (pos == 1) {
                     context.startActivity(new Intent(context, PerlengkapanKantorActivity.class));
                 }
 
-                if (pos == 2){
+                if (pos == 2) {
                     context.startActivity(new Intent(context, PeralatanKantorActivity.class));
                 }
 
-                if (pos == 3){
+                if (pos == 3) {
                     context.startActivity(new Intent(context, KertasActivity.class));
                 }
 
-                if (pos == 4){
+                if (pos == 4) {
                     context.startActivity(new Intent(context, ElektronikActivity.class));
                 }
 
-                if (pos == 5){
+                if (pos == 5) {
                     context.startActivity(new Intent(context, BukuActivity.class));
                 }
 
-                if (pos == 6){
+                if (pos == 6) {
                     context.startActivity(new Intent(context, PeralatanRumahTangga.class));
                 }
 

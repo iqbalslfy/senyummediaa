@@ -22,12 +22,14 @@ import net.source.senyum.senyummediaa.Data.DataFlashSale;
 import net.source.senyum.senyummediaa.Data.DataItemPopuler;
 import net.source.senyum.senyummediaa.Data.DataKategori;
 import net.source.senyum.senyummediaa.Data.DataPopulerProduk;
+import net.source.senyum.senyummediaa.Data.DataRekomendasi;
 import net.source.senyum.senyummediaa.R;
 import net.source.senyum.senyummediaa.RecyclerView.MenuBrand;
 import net.source.senyum.senyummediaa.RecyclerView.MenuFlashSale;
 import net.source.senyum.senyummediaa.RecyclerView.MenuKategori;
 import net.source.senyum.senyummediaa.RecyclerView.MenuPencarianPopuler;
 import net.source.senyum.senyummediaa.RecyclerView.MenuPopulerProduk;
+import net.source.senyum.senyummediaa.RecyclerView.MenuRekomendasi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,23 +49,26 @@ public class FragmentHome extends Fragment {
             rvFlashSale,
             rvBrand,
             rvPopuler,
-            rvKategori;
+            rvKategori,
+            rvRekomendasi;
 
     MenuPencarianPopuler menuPencarianPopuler;
     MenuFlashSale menuFlashSale;
     MenuBrand menuBrand;
     MenuPopulerProduk populerProduk;
     MenuKategori menuKategori;
+    MenuRekomendasi menuRekomendasi;
 
     RecyclerView.LayoutManager layoutManagerPencarianPopuler, layoutManagerFlashSale, layoutManagerPopulerProduk;
 
-    GridLayoutManager gridlayoutBRAND, gridlayoutKategori;
+    GridLayoutManager gridlayoutBRAND, gridlayoutKategori, gridlayoutRekomendasi;
 
     List<DataItemPopuler> itemPopulers = new ArrayList<>();
     List<DataFlashSale> itemFlashSale = new ArrayList<>();
     List<DataBrand> itemBrand = new ArrayList<>();
     List<DataPopulerProduk> itemPopulerProduk = new ArrayList<>();
     List<DataKategori> itemKategori = new ArrayList<>();
+    List<DataRekomendasi> itemRekomendasi = new ArrayList<>();
 
     public FragmentHome() {
     }
@@ -84,6 +89,7 @@ public class FragmentHome extends Fragment {
         brand();
         populerProduks();
         kategori();
+        rekomendasi();
 
         rvPencarianPopuler = view.findViewById(R.id.rv_pencarian_populer);
         rvPencarianPopuler.setHasFixedSize(true);
@@ -100,11 +106,15 @@ public class FragmentHome extends Fragment {
         rvKategori = view.findViewById(R.id.rv_kategori);
         rvKategori.setHasFixedSize(true);
 
+        rvRekomendasi = view.findViewById(R.id.rv_rekomendasi);
+        rvRekomendasi.setHasFixedSize(true);
+
         layoutManagerFlashSale = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         layoutManagerPopulerProduk = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         layoutManagerPencarianPopuler = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         gridlayoutBRAND = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
         gridlayoutKategori = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+        gridlayoutRekomendasi = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
 
         rvPencarianPopuler.setLayoutManager(layoutManagerPencarianPopuler);
         menuPencarianPopuler = new MenuPencarianPopuler(itemPopulers, getContext());
@@ -125,6 +135,11 @@ public class FragmentHome extends Fragment {
         rvKategori.setLayoutManager(gridlayoutKategori);
         menuKategori = new MenuKategori(itemKategori, getContext());
         rvKategori.setAdapter(menuKategori);
+
+
+        rvRekomendasi.setLayoutManager(gridlayoutRekomendasi);
+        menuRekomendasi = new MenuRekomendasi(itemRekomendasi, getContext());
+        rvRekomendasi.setAdapter(menuRekomendasi);
 
         mToolbar = view.findViewById(R.id.nav_action);
         viewpagerSlider = view.findViewById(R.id.viewPagerHome);
@@ -174,6 +189,15 @@ public class FragmentHome extends Fragment {
 
 
         return view;
+    }
+
+    private void rekomendasi() {
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.pulpen, "Pulpen" ,"50,000"));
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.kalkulator, "Kalkulator" ,"40,000"));
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.penggaris, "Penggaris" ,"15,000"));
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.pulpen, "Pulpen" ,"50,000"));
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.kalkulator, "Kalkulator" ,"40,000"));
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.penggaris, "Penggaris" ,"15,000"));
     }
 
     private void kategori() {

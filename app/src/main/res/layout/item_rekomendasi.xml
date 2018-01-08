@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/white"
+    >
+
+    <ImageView
+        android:id="@+id/ImgRekomendasi"
+        android:layout_width="150dp"
+        android:layout_height="200dp"
+        android:src="@drawable/pulpen"/>
+
+    <TextView
+        android:id="@+id/txtJudulRekomendasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/populer_produk"
+        android:textAlignment="center"
+        android:padding="2dp"/>
+
+    <TextView
+        android:id="@+id/txtHargaRekomendasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/harga"
+        android:textAlignment="center"
+        />
+</LinearLayout>

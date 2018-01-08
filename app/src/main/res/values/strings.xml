@@ -11,6 +11,8 @@
     <string name="pencarian">PENCARIAN POPULER</string>
     <string name="flash_sale_txt">FLASH SALE</string>
     <string name="populer_produk">POPULER PRODUK</string>
+    <string name="harga">Rp. 1,000,000</string>
+    <string name="rekomendasi">REKOMENDASI</string>
 
 
 </resources>

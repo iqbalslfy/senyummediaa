@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.content, new FragmentHome()).commit();
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
     }
@@ -62,13 +62,13 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.nav_home:
                     transaction.replace(R.id.content, new FragmentHome()).commit();
-                    return true;
+                    break;
                 case R.id.nav_kategori:
                     transaction.replace(R.id.content, new FragmentKategori()).commit();
-                    return true;
+                    break;
                 case R.id.nav_akun:
                     transaction.replace(R.id.content, new FragmentAkunSaya()).commit();
-                    return true;
+                    break;
             }
             return true;
         }

@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import net.source.senyum.senyummediaa.Activity.Pemesanan;
 import net.source.senyum.senyummediaa.Data.DataRT;
-import net.source.senyum.senyummediaa.Data.DataStationery;
 import net.source.senyum.senyummediaa.FunctionClick.ItemClickListener;
 import net.source.senyum.senyummediaa.R;
 
@@ -73,7 +72,7 @@ public class MenuRumahTanggaRv extends RecyclerView.Adapter<RumahTanggaViewHolde
     @Override
     public RumahTanggaViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_toko, parent, false);
+        View view = inflater.inflate(R.layout.item_stationery, parent, false);
         return new RumahTanggaViewHolder(view);
     }
 

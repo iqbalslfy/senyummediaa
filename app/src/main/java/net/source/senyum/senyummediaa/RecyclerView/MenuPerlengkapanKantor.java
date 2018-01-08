@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import net.source.senyum.senyummediaa.Activity.Pemesanan;
 import net.source.senyum.senyummediaa.Data.DataPerlengkapanKantor;
-import net.source.senyum.senyummediaa.Data.DataStationery;
 import net.source.senyum.senyummediaa.FunctionClick.ItemClickListener;
 import net.source.senyum.senyummediaa.R;
 
@@ -73,7 +72,7 @@ public class MenuPerlengkapanKantor extends RecyclerView.Adapter<MenuPerlKanHold
     @Override
     public MenuPerlKanHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_toko, parent, false);
+        View view = inflater.inflate(R.layout.item_stationery, parent, false);
         return new MenuPerlKanHolder(view);
     }
 

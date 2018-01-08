@@ -10,6 +10,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -37,7 +38,8 @@ public class FragmentKategori extends Fragment {
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager = view.findViewById(R.id.viewpager);
 
-        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         tabLayout.setupWithViewPager(viewPager);
         setupViewPager(viewPager);
 
@@ -46,7 +48,6 @@ public class FragmentKategori extends Fragment {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapterTab adapter = new ViewPagerAdapterTab(getFragmentManager());
-        adapter.addFrag(new FragmentBeranda(), "BERANDA");
         adapter.addFrag(new FragmentStationery(), "Stationery");
         adapter.addFrag(new FragmentPerlengkapanKantor(), "Perlengkapan Kantor");
         adapter.addFrag(new FragmentPeralatanKantor(), "Peralatan Kantor");
@@ -54,7 +55,9 @@ public class FragmentKategori extends Fragment {
         adapter.addFrag(new FragmentElektronik(), "Elektronik");
         adapter.addFrag(new FragmentBuku(), "Buku");
         adapter.addFrag(new FragmentPeralatanRT(), "Peralatan Rumah Tangga");
+
         viewPager.setAdapter(adapter);
+
     }
 
     class ViewPagerAdapterTab extends FragmentPagerAdapter {

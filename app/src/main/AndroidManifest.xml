@@ -20,7 +20,6 @@
         <activity android:name=".Activity.Pemesanan" />
         <activity android:name=".Activity.PromoActivity" />
         <activity android:name=".Activity.BrandActivity" />
-        <activity android:name=".Activity.Main2Activity" />
         <activity android:name=".Activity.PencarianActivity" />
         <activity android:name=".Activity.FlashSaleActivity" />
         <activity android:name=".Kategori.StationeryActivity" />
@@ -29,7 +28,7 @@
         <activity android:name=".Kategori.KertasActivity" />
         <activity android:name=".Kategori.ElektronikActivity" />
         <activity android:name=".Kategori.BukuActivity" />
-        <activity android:name=".Kategori.PeralatanRumahTangga"></activity>
+        <activity android:name=".Kategori.PeralatanRumahTangga" />
     </application>
 
 </manifest>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="5dp"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/img_toko"
+        android:layout_width="match_parent"
+        android:layout_height="131dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/txtNamaToko"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Nama Toko"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/txtHarga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1000.000"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/txtHargaSebPotongan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2000.000"
+        android:textAlignment="center"
+
+        />
+</LinearLayout>
+
+
+

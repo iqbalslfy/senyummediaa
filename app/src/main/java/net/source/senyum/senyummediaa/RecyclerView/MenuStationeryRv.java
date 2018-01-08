@@ -8,14 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
 import net.source.senyum.senyummediaa.Activity.Pemesanan;
 import net.source.senyum.senyummediaa.Data.DataStationery;
-import net.source.senyum.senyummediaa.Fragment.FragmentBeranda;
 import net.source.senyum.senyummediaa.FunctionClick.ItemClickListener;
 import net.source.senyum.senyummediaa.R;
 
@@ -29,7 +27,6 @@ import java.util.List;
 class StationeryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
     public ImageView imageView;
     public TextView textNamaToko,textHarga,textHargaSebPotongan;
-    public RelativeLayout relativeLayout;
     private ItemClickListener itemClickListener;
 
 
@@ -77,7 +74,7 @@ public class MenuStationeryRv extends RecyclerView.Adapter<StationeryViewHolder>
     @Override
     public StationeryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_toko, parent, false);
+        View view = inflater.inflate(R.layout.item_stationery, parent, false);
         return new StationeryViewHolder(view);
     }
 

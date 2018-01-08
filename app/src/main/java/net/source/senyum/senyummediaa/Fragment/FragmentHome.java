@@ -192,12 +192,12 @@ public class FragmentHome extends Fragment {
     }
 
     private void rekomendasi() {
-        itemRekomendasi.add(new DataRekomendasi(R.drawable.pulpen, "Pulpen" ,"50,000"));
-        itemRekomendasi.add(new DataRekomendasi(R.drawable.kalkulator, "Kalkulator" ,"40,000"));
-        itemRekomendasi.add(new DataRekomendasi(R.drawable.penggaris, "Penggaris" ,"15,000"));
-        itemRekomendasi.add(new DataRekomendasi(R.drawable.pulpen, "Pulpen" ,"50,000"));
-        itemRekomendasi.add(new DataRekomendasi(R.drawable.kalkulator, "Kalkulator" ,"40,000"));
-        itemRekomendasi.add(new DataRekomendasi(R.drawable.penggaris, "Penggaris" ,"15,000"));
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.pulpen, "Pulpen", "50,000"));
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.kalkulator, "Kalkulator", "40,000"));
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.penggaris, "Penggaris", "15,000"));
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.pulpen, "Pulpen", "50,000"));
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.kalkulator, "Kalkulator", "40,000"));
+        itemRekomendasi.add(new DataRekomendasi(R.drawable.penggaris, "Penggaris", "15,000"));
     }
 
     private void kategori() {

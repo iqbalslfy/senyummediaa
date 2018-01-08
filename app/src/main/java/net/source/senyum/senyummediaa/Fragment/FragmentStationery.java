@@ -6,33 +6,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
 import net.source.senyum.senyummediaa.Adapters.ViewPagerAdapter;
 import net.source.senyum.senyummediaa.Data.DataBrand;
-import net.source.senyum.senyummediaa.Data.DataBuku;
-import net.source.senyum.senyummediaa.Data.DataElektronik;
-import net.source.senyum.senyummediaa.Data.DataKertas;
-import net.source.senyum.senyummediaa.Data.DataPeralatanKantor;
-import net.source.senyum.senyummediaa.Data.DataPerlengkapanKantor;
-import net.source.senyum.senyummediaa.Data.DataPromo;
-import net.source.senyum.senyummediaa.Data.DataRT;
 import net.source.senyum.senyummediaa.Data.DataStationery;
 import net.source.senyum.senyummediaa.R;
 import net.source.senyum.senyummediaa.RecyclerView.MenuBrand;
-import net.source.senyum.senyummediaa.RecyclerView.MenuBukuRv;
-import net.source.senyum.senyummediaa.RecyclerView.MenuElektronikRv;
-import net.source.senyum.senyummediaa.RecyclerView.MenuKertas;
-import net.source.senyum.senyummediaa.RecyclerView.MenuPeralatanKantor;
-import net.source.senyum.senyummediaa.RecyclerView.MenuPerlengkapanKantor;
-import net.source.senyum.senyummediaa.RecyclerView.MenuPromo;
-import net.source.senyum.senyummediaa.RecyclerView.MenuRumahTanggaRv;
 import net.source.senyum.senyummediaa.RecyclerView.MenuStationeryRv;
 
 import java.util.ArrayList;
@@ -44,48 +28,16 @@ import java.util.TimerTask;
 public class FragmentStationery extends Fragment {
 
     GridLayoutManager gridLayoutStationery,
-            gridperalatankantor,
-            gridperlengkapankantor,
-            gridKertas,
-            gridBrand,
-            gridElektronik,
-            gridBuku,
-            gridRT;
-
+            gridBrand;
 
     RecyclerView rvBrands,
-            rvStationery,
-            rvPeralatanKantor,
-            rvPerlKantor,
-            rvKertas,
-            rvPromo,
-            rvElektronik,
-            rvBuku,
-            rvRumahTangga;
+            rvStationery;
 
     MenuBrand menuBrandAdapter;
-    MenuStationeryRv viewAdapterToko;
-    MenuPeralatanKantor VAPeralatanKantor;
-    MenuPerlengkapanKantor VAPerlengkapanKantor;
-    MenuElektronikRv VAElektronik;
-    MenuBukuRv VABuku;
-    MenuRumahTanggaRv VART;
-    MenuKertas VAKertas;
-    MenuPromo VAmenuPromo;
-
-    RecyclerView.LayoutManager layoutMenuPromo;
-
+    MenuStationeryRv menuStationeryRv;
 
     List<DataBrand> brandList = new ArrayList<>();
-    List<DataStationery> MenuStationery = new ArrayList<>();
-    List<DataPeralatanKantor> MenuPeralatan = new ArrayList<>();
-    List<DataPerlengkapanKantor> MenuPerlengkapan = new ArrayList<>();
-    List<DataKertas> MenuKertas = new ArrayList<>();
-    List<DataElektronik> MenuElektronik = new ArrayList<>();
-    List<DataBuku> MenuBuku = new ArrayList<>();
-    List<DataRT> MenuRT = new ArrayList<>();
-    List<DataPromo> DataPromo = new ArrayList<>();
-
+    List<DataStationery> stationeryList = new ArrayList<>();
 
     private ViewPager viewpagerSlider;
     private Timer timer;
@@ -101,78 +53,29 @@ public class FragmentStationery extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_stationery, container, false);
 
-        Stationery();
-        Promo();
-        Perlengkapan();
-//        Peralatan();
-//        Elektronik();
-//        Buku();
-//        RT();
-//        Kertas();
-//        Brands();
 
-        rvBrands = view.findViewById(R.id.rc_menu);
-        rvStationery = view.findViewById(R.id.rc_menu_stationery);
-        rvPeralatanKantor = view.findViewById(R.id.rc_menu_peralatan_kantor);
-        rvPerlKantor = view.findViewById(R.id.rc_menu_perlengkapan);
-        rvKertas = view.findViewById(R.id.rc_menu_kertas);
-        rvPromo = view.findViewById(R.id.rc_manue_promo);
-        rvElektronik = view.findViewById(R.id.rc_menu_elektronik);
-        rvBuku = view.findViewById(R.id.rc_menu_buku);
-        rvRumahTangga = view.findViewById(R.id.rc_menu_rt);
+        Brands();
+        Stationery();
+
         viewpagerSlider = view.findViewById(R.id.viewPagerHome);
 
-
+        rvBrands = view.findViewById(R.id.rc_brand_stationery);
         rvBrands.setHasFixedSize(true);
+
+        rvStationery = view.findViewById(R.id.rc_menu_stationery);
         rvStationery.setHasFixedSize(true);
-        rvPeralatanKantor.setHasFixedSize(true);
-        rvPerlKantor.setHasFixedSize(true);
-        rvKertas.setHasFixedSize(true);
-        rvPromo.setHasFixedSize(true);
-        rvElektronik.setHasFixedSize(true);
-        rvBuku.setHasFixedSize(true);
-        rvRumahTangga.setHasFixedSize(true);
+
 
         gridBrand = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
-        layoutMenuPromo = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        gridLayoutStationery = new GridLayoutManager(getContext(), 2);
-        gridperalatankantor = new GridLayoutManager(getContext(), 2);
-        gridperlengkapankantor = new GridLayoutManager(getContext(), 2);
-        gridKertas = new GridLayoutManager(getContext(), 2);
-        gridElektronik = new GridLayoutManager(getContext(), 2);
-        gridBuku = new GridLayoutManager(getContext(), 2);
-        gridRT = new GridLayoutManager(getContext(), 2);
+        gridLayoutStationery = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
 
         rvStationery.setLayoutManager(gridLayoutStationery);
-        viewAdapterToko = new MenuStationeryRv(MenuStationery, getContext());
-        rvStationery.setAdapter(viewAdapterToko);
+        menuStationeryRv = new MenuStationeryRv(stationeryList, getContext());
+        rvStationery.setAdapter(menuStationeryRv);
 
         rvBrands.setLayoutManager(gridBrand);
-        rvPeralatanKantor.setLayoutManager(gridperalatankantor);
-        rvPerlKantor.setLayoutManager(gridperlengkapankantor);
-        rvKertas.setLayoutManager(gridKertas);
-        rvPromo.setLayoutManager(layoutMenuPromo);
-        rvElektronik.setLayoutManager(gridElektronik);
-        rvBuku.setLayoutManager(gridBuku);
-        rvRumahTangga.setLayoutManager(gridRT);
-
         menuBrandAdapter = new MenuBrand(brandList, getContext());
-        VAPeralatanKantor = new MenuPeralatanKantor(MenuPeralatan, getContext());
-        VAPerlengkapanKantor = new MenuPerlengkapanKantor(MenuPerlengkapan, getContext());
-        VAKertas = new MenuKertas(MenuKertas, getContext());
-        VAmenuPromo = new MenuPromo(DataPromo, getContext());
-        VAElektronik = new MenuElektronikRv(MenuElektronik, getContext());
-        VABuku = new MenuBukuRv(MenuBuku, getContext());
-        VART = new MenuRumahTanggaRv(MenuRT, getContext());
-
         rvBrands.setAdapter(menuBrandAdapter);
-        rvPeralatanKantor.setAdapter(VAPeralatanKantor);
-        rvPerlKantor.setAdapter(VAPerlengkapanKantor);
-        rvKertas.setAdapter(VAKertas);
-        rvPromo.setAdapter(VAmenuPromo);
-        rvElektronik.setAdapter(VAElektronik);
-        rvBuku.setAdapter(VABuku);
-        rvRumahTangga.setAdapter(VART);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getActivity());
         viewpagerSlider.setAdapter(viewPagerAdapter);
@@ -266,66 +169,10 @@ public class FragmentStationery extends Fragment {
     }
 
     private void Stationery() {
-        MenuStationery.add(new DataStationery(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
-        MenuStationery.add(new DataStationery(R.drawable.kedai, "Kedai Cafe", "125.000", "130.000"));
-        MenuStationery.add(new DataStationery(R.drawable.pencake, "Pencake Cafe", "155.000", "170.000"));
-        MenuStationery.add(new DataStationery(R.drawable.pondok, "Pondok Cafe", "120.000", "160.000"));
+        stationeryList.add(new DataStationery(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
+        stationeryList.add(new DataStationery(R.drawable.kedai, "Kedai Cafe", "125.000", "130.000"));
+        stationeryList.add(new DataStationery(R.drawable.pencake, "Pencake Cafe", "155.000", "170.000"));
+        stationeryList.add(new DataStationery(R.drawable.pondok, "Pondok Cafe", "120.000", "160.000"));
     }
 
-    private void Perlengkapan() {
-        MenuPerlengkapan.add(new DataPerlengkapanKantor(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
-        MenuPerlengkapan.add(new DataPerlengkapanKantor(R.drawable.kedai, "Kedai Cafe", "125.000", "130.000"));
-        MenuPerlengkapan.add(new DataPerlengkapanKantor(R.drawable.pencake, "Pencake Cafe", "155.000", "170.000"));
-        MenuPerlengkapan.add(new DataPerlengkapanKantor(R.drawable.pondok, "Pondok Cafe", "120.000", "160.000"));
-
-    }
-
-    private void Peralatan() {
-        MenuPeralatan.add(new DataPeralatanKantor(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
-        MenuPeralatan.add(new DataPeralatanKantor(R.drawable.kedai, "Kedai Cafe", "125.000", "130.000"));
-        MenuPeralatan.add(new DataPeralatanKantor(R.drawable.pencake, "Pencake Cafe", "155.000", "170.000"));
-        MenuPeralatan.add(new DataPeralatanKantor(R.drawable.pondok, "Pondok Cafe", "120.000", "160.000"));
-
-    }
-
-    private void Kertas() {
-        MenuKertas.add(new DataKertas(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
-        MenuKertas.add(new DataKertas(R.drawable.kedai, "Kedai Cafe", "125.000", "130.000"));
-        MenuKertas.add(new DataKertas(R.drawable.pencake, "Pencake Cafe", "155.000", "170.000"));
-        MenuKertas.add(new DataKertas(R.drawable.pondok, "Pondok Cafe", "120.000", "160.000"));
-
-    }
-
-    private void Elektronik() {
-        MenuElektronik.add(new DataElektronik(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
-        MenuElektronik.add(new DataElektronik(R.drawable.kedai, "Kedai Cafe", "125.000", "130.000"));
-        MenuElektronik.add(new DataElektronik(R.drawable.pencake, "Pencake Cafe", "155.000", "170.000"));
-        MenuElektronik.add(new DataElektronik(R.drawable.pondok, "Pondok Cafe", "120.000", "160.000"));
-
-    }
-
-    private void Buku() {
-        MenuBuku.add(new DataBuku(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
-        MenuBuku.add(new DataBuku(R.drawable.kedai, "Kedai Cafe", "125.000", "130.000"));
-        MenuBuku.add(new DataBuku(R.drawable.pencake, "Pencake Cafe", "155.000", "170.000"));
-        MenuBuku.add(new DataBuku(R.drawable.pondok, "Pondok Cafe", "120.000", "160.000"));
-
-    }
-
-    private void RT() {
-        MenuRT.add(new DataRT(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
-        MenuRT.add(new DataRT(R.drawable.kedai, "Kedai Cafe", "125.000", "130.000"));
-        MenuRT.add(new DataRT(R.drawable.pencake, "Pencake Cafe", "155.000", "170.000"));
-        MenuRT.add(new DataRT(R.drawable.pondok, "Pondok Cafe", "120.000", "160.000"));
-
-    }
-
-    private void Promo() {
-        DataPromo.add(new DataPromo(R.drawable.slider1));
-        DataPromo.add(new DataPromo(R.drawable.slider2));
-        DataPromo.add(new DataPromo(R.drawable.slider3));
-        DataPromo.add(new DataPromo(R.drawable.slider4));
-        DataPromo.add(new DataPromo(R.drawable.slider5));
-        DataPromo.add(new DataPromo(R.drawable.slider7));
-    }
 }

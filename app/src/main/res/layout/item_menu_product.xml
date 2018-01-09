@@ -10,13 +10,13 @@
     >
 
     <ImageView
-        android:id="@+id/ImgRekomendasi"
+        android:id="@+id/ImgMenuProduct"
         android:layout_width="150dp"
         android:layout_height="200dp"
         android:src="@drawable/pulpen"/>
 
     <TextView
-        android:id="@+id/txtJudulRekomendasi"
+        android:id="@+id/txtJudulProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/populer_produk"
@@ -24,7 +24,7 @@
         android:padding="2dp"/>
 
     <TextView
-        android:id="@+id/txtHargaRekomendasi"
+        android:id="@+id/txtHargaProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/harga"

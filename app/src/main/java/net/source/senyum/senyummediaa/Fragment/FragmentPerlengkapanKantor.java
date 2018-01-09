@@ -15,9 +15,11 @@ import android.widget.LinearLayout;
 
 import net.source.senyum.senyummediaa.Adapters.ViewPagerAdapter;
 import net.source.senyum.senyummediaa.Data.DataBrand;
-import net.source.senyum.senyummediaa.Data.DataStationery;
+import net.source.senyum.senyummediaa.Data.DataMenuProduct;
+import net.source.senyum.senyummediaa.Data.DataPerlengkapanKantor;
 import net.source.senyum.senyummediaa.R;
 import net.source.senyum.senyummediaa.RecyclerView.MenuBrand;
+import net.source.senyum.senyummediaa.RecyclerView.MenuPerlengkapanKantor;
 import net.source.senyum.senyummediaa.RecyclerView.MenuStationeryRv;
 
 import java.util.ArrayList;
@@ -27,18 +29,20 @@ import java.util.TimerTask;
 
 
 public class FragmentPerlengkapanKantor extends Fragment {
-    GridLayoutManager gridLayoutStationery,
+    GridLayoutManager gridLayoutPerlengkapan,
             gridBrand;
 
     RecyclerView rvBrands,
-            rvStationery;
+            rvPerlengkapanKantor;
 
     MenuBrand menuBrandAdapter;
-    MenuStationeryRv menuStationeryRv;
+    MenuPerlengkapanKantor menuperlengkapanKantor;
 
     List<DataBrand> brandList = new ArrayList<>();
-    List<DataStationery> stationeryList = new ArrayList<>();
+    List<DataMenuProduct> perlengkapanKantorList = new ArrayList<>();
+
     private ViewPager viewpagerSlider;
+
     private Timer timer;
     LinearLayout SliderDots;
     private int dotcounts;
@@ -60,12 +64,31 @@ public class FragmentPerlengkapanKantor extends Fragment {
         brand();
         perlengkapan();
 
+        rvBrands = view.findViewById(R.id.rv_brand_perlengkapan);
+        rvBrands.setHasFixedSize(true);
+
+        rvPerlengkapanKantor = view.findViewById(R.id.rv_menu_perlengkapan);
+        rvPerlengkapanKantor.setHasFixedSize(true);
+
+        gridBrand = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
+        gridLayoutPerlengkapan = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
+
+        rvPerlengkapanKantor.setLayoutManager(gridLayoutPerlengkapan);
+        menuperlengkapanKantor = new MenuPerlengkapanKantor(perlengkapanKantorList, getContext());
+        rvPerlengkapanKantor.setAdapter(menuperlengkapanKantor);
+
+        rvBrands.setLayoutManager(gridBrand);
+        menuBrandAdapter = new MenuBrand(brandList, getContext());
+        rvBrands.setAdapter(menuBrandAdapter);
+
+        viewpagerSlider = view.findViewById(R.id.viewPagerHome);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getActivity());
         viewpagerSlider.setAdapter(viewPagerAdapter);
 
         SliderDots = view.findViewById(R.id.Dots);
         dotcounts = viewPagerAdapter.getCount();
         dots = new ImageView[dotcounts];
+
 
         for (int i = 0; i < dotcounts; i++) {
             dots[i] = new ImageView(getActivity());
@@ -111,7 +134,16 @@ public class FragmentPerlengkapanKantor extends Fragment {
     }
 
     private void brand() {
-
+        brandList.add(new DataBrand(R.drawable.blueprint));
+        brandList.add(new DataBrand(R.drawable.deli));
+        brandList.add(new DataBrand(R.drawable.etona));
+        brandList.add(new DataBrand(R.drawable.e_print));
+        brandList.add(new DataBrand(R.drawable.imco));
+        brandList.add(new DataBrand(R.drawable.zebra));
+        brandList.add(new DataBrand(R.drawable.sidu));
+        brandList.add(new DataBrand(R.drawable.parker));
+        brandList.add(new DataBrand(R.drawable.imtec));
+        brandList.add(new DataBrand(R.drawable.naci));
     }
 
     public class TimerTasks extends TimerTask {

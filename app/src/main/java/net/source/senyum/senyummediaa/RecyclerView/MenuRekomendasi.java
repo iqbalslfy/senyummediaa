@@ -30,9 +30,9 @@ class RekomendasiHolder extends RecyclerView.ViewHolder implements View.OnClickL
     public RekomendasiHolder(View itemView) {
         super(itemView);
 
-        ImgRekomendasi = itemView.findViewById(R.id.ImgRekomendasi);
-        txtJudul = itemView.findViewById(R.id.txtJudulRekomendasi);
-        txtHarga = itemView.findViewById(R.id.txtHargaRekomendasi);
+        ImgRekomendasi = itemView.findViewById(R.id.ImgMenuProduct);
+        txtJudul = itemView.findViewById(R.id.txtJudulProduct);
+        txtHarga = itemView.findViewById(R.id.txtHargaProduct);
 
         itemView.setOnClickListener(this);
     }
@@ -64,7 +64,7 @@ public class MenuRekomendasi extends RecyclerView.Adapter<RekomendasiHolder>{
     @Override
     public RekomendasiHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_rekomendasi, parent, false);
+        View view = inflater.inflate(R.layout.item_menu_product, parent, false);
 
         return new RekomendasiHolder(view);
     }

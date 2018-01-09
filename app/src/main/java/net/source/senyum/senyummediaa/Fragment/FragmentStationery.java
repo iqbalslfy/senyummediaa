@@ -12,9 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
 import net.source.senyum.senyummediaa.Adapters.ViewPagerAdapter;
 import net.source.senyum.senyummediaa.Data.DataBrand;
-import net.source.senyum.senyummediaa.Data.DataStationery;
+import net.source.senyum.senyummediaa.Data.DataMenuProduct;
 import net.source.senyum.senyummediaa.R;
 import net.source.senyum.senyummediaa.RecyclerView.MenuBrand;
 import net.source.senyum.senyummediaa.RecyclerView.MenuStationeryRv;
@@ -37,7 +38,7 @@ public class FragmentStationery extends Fragment {
     MenuStationeryRv menuStationeryRv;
 
     List<DataBrand> brandList = new ArrayList<>();
-    List<DataStationery> stationeryList = new ArrayList<>();
+    List<DataMenuProduct> stationeryList = new ArrayList<>();
 
     private ViewPager viewpagerSlider;
     private Timer timer;
@@ -53,7 +54,6 @@ public class FragmentStationery extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_stationery, container, false);
 
-
         Brands();
         Stationery();
 
@@ -64,7 +64,6 @@ public class FragmentStationery extends Fragment {
 
         rvStationery = view.findViewById(R.id.rc_menu_stationery);
         rvStationery.setHasFixedSize(true);
-
 
         gridBrand = new GridLayoutManager(getContext(), 2, GridLayoutManager.HORIZONTAL, false);
         gridLayoutStationery = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
@@ -169,10 +168,10 @@ public class FragmentStationery extends Fragment {
     }
 
     private void Stationery() {
-        stationeryList.add(new DataStationery(R.drawable.daebak, "Daebak Cafe", "100.000", "150.000"));
-        stationeryList.add(new DataStationery(R.drawable.kedai, "Kedai Cafe", "125.000", "130.000"));
-        stationeryList.add(new DataStationery(R.drawable.pencake, "Pencake Cafe", "155.000", "170.000"));
-        stationeryList.add(new DataStationery(R.drawable.pondok, "Pondok Cafe", "120.000", "160.000"));
+        stationeryList.add(new DataMenuProduct(R.drawable.daebak, "Daebak Cafe", "150.000"));
+        stationeryList.add(new DataMenuProduct(R.drawable.kedai, "Kedai Cafe", "130.000"));
+        stationeryList.add(new DataMenuProduct(R.drawable.pencake, "Pencake Cafe", "170.000"));
+        stationeryList.add(new DataMenuProduct(R.drawable.pondok, "Pondok Cafe", "160.000"));
     }
 
 }

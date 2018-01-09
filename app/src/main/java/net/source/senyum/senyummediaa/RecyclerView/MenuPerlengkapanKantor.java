@@ -12,39 +12,32 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import net.source.senyum.senyummediaa.Activity.Pemesanan;
-import net.source.senyum.senyummediaa.Data.DataPerlengkapanKantor;
+import net.source.senyum.senyummediaa.Data.DataMenuProduct;
 import net.source.senyum.senyummediaa.FunctionClick.ItemClickListener;
 import net.source.senyum.senyummediaa.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by SONY on 14/12/2017.
- */
-
-class MenuPerlKanHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener{
+class MenuPerlKanHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
     public ImageView imageView;
-    public TextView textNamaToko,textHarga,textHargaSebPotongan;
+    public TextView txtJudul, txtHarga;
     private ItemClickListener itemClickListener;
 
     public MenuPerlKanHolder(View itemView) {
         super(itemView);
-        imageView = (ImageView)itemView.findViewById(R.id.img_toko);
-        textNamaToko = (TextView)itemView.findViewById(R.id.txtNamaToko);
-        textHarga = itemView.findViewById(R.id.txtHarga);
-        textHargaSebPotongan = itemView.findViewById(R.id.txtHargaSebPotongan);
-
+        imageView = itemView.findViewById(R.id.img_toko);
+        txtJudul = itemView.findViewById(R.id.txtJudulProduct);
+        txtHarga = itemView.findViewById(R.id.txtHargaProduct);
         itemView.setOnClickListener(this);
 
-        strikeThroughText(textHargaSebPotongan);
     }
 
-    private void strikeThroughText(TextView price){
+    private void strikeThroughText(TextView price) {
         price.setPaintFlags(price.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
     }
 
-    public void setItemClickListener(ItemClickListener itemClickListener){
+    public void setItemClickListener(ItemClickListener itemClickListener) {
         this.itemClickListener = itemClickListener;
     }
 
@@ -61,32 +54,30 @@ class MenuPerlKanHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
 public class MenuPerlengkapanKantor extends RecyclerView.Adapter<MenuPerlKanHolder> {
 
-    private List<DataPerlengkapanKantor> PerlengkapanKantor = new ArrayList<>();
+    private List<DataMenuProduct> itemProduct = new ArrayList<>();
     private Context context;
 
-    public MenuPerlengkapanKantor(List<DataPerlengkapanKantor> perlengkapanKantor, Context context) {
-        PerlengkapanKantor = perlengkapanKantor;
+    public MenuPerlengkapanKantor(List<DataMenuProduct> itemProduct, Context context) {
+        this.itemProduct = itemProduct;
         this.context = context;
     }
 
     @Override
     public MenuPerlKanHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_stationery, parent, false);
+        View view = inflater.inflate(R.layout.item_menu_product, parent, false);
         return new MenuPerlKanHolder(view);
     }
 
     @Override
     public void onBindViewHolder(MenuPerlKanHolder holder, int position) {
-        holder.imageView.setImageResource(PerlengkapanKantor.get(position).getGambar());
-        holder.textNamaToko.setText(PerlengkapanKantor.get(position).getNama_toko());
-        holder.textHarga.setText(PerlengkapanKantor.get(position).getHarga());
-        holder.textHargaSebPotongan.setText(PerlengkapanKantor.get(position).getHargasebpotongan());
+        holder.imageView.setImageResource(itemProduct.get(position).getGambar());
+        holder.txtJudul.setText(itemProduct.get(position).getJudul());
+        holder.txtHarga.setText(itemProduct.get(position).getHarga());
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int pos, boolean isLongClick) {
-                Toast.makeText(context, ""+ PerlengkapanKantor.get(pos).getNama_toko(),Toast.LENGTH_SHORT).show();
                 context.startActivity(new Intent(context, Pemesanan.class));
             }
         });
@@ -94,6 +85,6 @@ public class MenuPerlengkapanKantor extends RecyclerView.Adapter<MenuPerlKanHold
 
     @Override
     public int getItemCount() {
-        return PerlengkapanKantor.size();
+        return itemProduct.size();
     }
 }

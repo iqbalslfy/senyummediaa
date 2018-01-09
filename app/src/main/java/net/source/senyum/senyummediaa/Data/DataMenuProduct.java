@@ -1,21 +1,20 @@
 package net.source.senyum.senyummediaa.Data;
 
 /**
- * Created by SONY on 14/12/2017.
+ * Created by SONY on 30/10/2017.
  */
 
-public class DataPerlengkapanKantor {
-
+public class DataMenuProduct {
     private int Gambar;
-    private String judul,harga;
+    private String Judul,Harga;
 
-    public DataPerlengkapanKantor() {
+    public DataMenuProduct() {
     }
 
-    public DataPerlengkapanKantor(int gambar, String judul, String harga) {
+    public DataMenuProduct(int gambar, String judul, String harga) {
         Gambar = gambar;
-        this.judul = judul;
-        this.harga = harga;
+        Judul = judul;
+        Harga = harga;
     }
 
     public int getGambar() {
@@ -27,18 +26,18 @@ public class DataPerlengkapanKantor {
     }
 
     public String getJudul() {
-        return judul;
+        return Judul;
     }
 
     public void setJudul(String judul) {
-        this.judul = judul;
+        Judul = judul;
     }
 
     public String getHarga() {
-        return harga;
+        return Harga;
     }
 
     public void setHarga(String harga) {
-        this.harga = harga;
+        Harga = harga;
     }
 }

@@ -16,11 +16,9 @@ import android.widget.LinearLayout;
 import net.source.senyum.senyummediaa.Adapters.ViewPagerAdapter;
 import net.source.senyum.senyummediaa.Data.DataBrand;
 import net.source.senyum.senyummediaa.Data.DataMenuProduct;
-import net.source.senyum.senyummediaa.Data.DataPerlengkapanKantor;
 import net.source.senyum.senyummediaa.R;
 import net.source.senyum.senyummediaa.RecyclerView.MenuBrand;
 import net.source.senyum.senyummediaa.RecyclerView.MenuPerlengkapanKantor;
-import net.source.senyum.senyummediaa.RecyclerView.MenuStationeryRv;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +34,10 @@ public class FragmentPerlengkapanKantor extends Fragment {
             rvPerlengkapanKantor;
 
     MenuBrand menuBrandAdapter;
-    MenuPerlengkapanKantor menuperlengkapanKantor;
+    MenuPerlengkapanKantor kantorAdapter;
 
     List<DataBrand> brandList = new ArrayList<>();
-    List<DataMenuProduct> perlengkapanKantorList = new ArrayList<>();
+    List<DataMenuProduct> itemProduct = new ArrayList<>();
 
     private ViewPager viewpagerSlider;
 
@@ -74,8 +72,8 @@ public class FragmentPerlengkapanKantor extends Fragment {
         gridLayoutPerlengkapan = new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false);
 
         rvPerlengkapanKantor.setLayoutManager(gridLayoutPerlengkapan);
-        menuperlengkapanKantor = new MenuPerlengkapanKantor(perlengkapanKantorList, getContext());
-        rvPerlengkapanKantor.setAdapter(menuperlengkapanKantor);
+        kantorAdapter = new MenuPerlengkapanKantor(itemProduct, getContext());
+        rvPerlengkapanKantor.setAdapter(kantorAdapter);
 
         rvBrands.setLayoutManager(gridBrand);
         menuBrandAdapter = new MenuBrand(brandList, getContext());
@@ -130,7 +128,12 @@ public class FragmentPerlengkapanKantor extends Fragment {
     }
 
     private void perlengkapan() {
-
+        itemProduct.add(new DataMenuProduct(R.drawable.pulpen, "Contoh", "1,000,000"));
+        itemProduct.add(new DataMenuProduct(R.drawable.kalkulator, "Contoh", "1,200,000"));
+        itemProduct.add(new DataMenuProduct(R.drawable.penggaris, "Contoh", "1,300,000"));
+        itemProduct.add(new DataMenuProduct(R.drawable.pulpen, "Contoh", "1,500,000"));
+        itemProduct.add(new DataMenuProduct(R.drawable.kalkulator, "Contoh", "1,120,000"));
+        itemProduct.add(new DataMenuProduct(R.drawable.penggaris, "Contoh", "2,000,000"));
     }
 
     private void brand() {

@@ -26,7 +26,7 @@ class MenuPerlKanHolder extends RecyclerView.ViewHolder implements View.OnClickL
 
     public MenuPerlKanHolder(View itemView) {
         super(itemView);
-        imageView = itemView.findViewById(R.id.img_toko);
+        imageView = itemView.findViewById(R.id.ImgMenuProduct);
         txtJudul = itemView.findViewById(R.id.txtJudulProduct);
         txtHarga = itemView.findViewById(R.id.txtHargaProduct);
         itemView.setOnClickListener(this);

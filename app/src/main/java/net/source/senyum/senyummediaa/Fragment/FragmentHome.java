@@ -1,5 +1,6 @@
 package net.source.senyum.senyummediaa.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,12 +11,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 
+import net.source.senyum.senyummediaa.Activity.BasketActivity;
+import net.source.senyum.senyummediaa.Activity.PencarianActivity;
 import net.source.senyum.senyummediaa.Adapters.ViewPagerAdapter;
 import net.source.senyum.senyummediaa.Data.DataBrand;
 import net.source.senyum.senyummediaa.Data.DataFlashSale;
@@ -90,6 +98,15 @@ public class FragmentHome extends Fragment {
         populerProduks();
         kategori();
         rekomendasi();
+
+        TextView txtCari = view.findViewById(R.id.txtCari);
+        txtCari.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                startActivity(new Intent(getContext(), PencarianActivity.class));
+                Toast.makeText(getActivity(), "tes!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         rvPencarianPopuler = view.findViewById(R.id.rv_pencarian_populer);
         rvPencarianPopuler.setHasFixedSize(true);
@@ -277,5 +294,30 @@ public class FragmentHome extends Fragment {
         timer.cancel();
         timer.purge();
     }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item_design_pencarian_populer) {
+//        int id = item_design_pencarian_populer.getItemId();
+//
+//        if (id == R.id.basket) {
+//            startActivity(new Intent(getContext(), BasketActivity.class));
+//        }
+//
+//        return super.onOptionsItemSelected(item_design_pencarian_populer);
+//    }
+//
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        inflater.inflate(R.menu.menu_basket, menu);
+//    }
+
+    //    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_basket, menu);
+//
+//        return true;
+//    }
+
 
 }

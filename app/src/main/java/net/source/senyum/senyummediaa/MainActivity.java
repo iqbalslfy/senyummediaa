@@ -35,9 +35,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FragmentManager manager;
-    private FragmentTransaction transaction;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,25 +71,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     };
-
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item_design_pencarian_populer) {
-//        int id = item_design_pencarian_populer.getItemId();
-//
-//        if (id == R.id.basket) {
-//            startActivity(new Intent(getApplicationContext(), BasketActivity.class));
-//        }
-//
-//        return super.onOptionsItemSelected(item_design_pencarian_populer);
-//    }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_basket, menu);
-//
-//        return true;
-//    }
 
 
 }

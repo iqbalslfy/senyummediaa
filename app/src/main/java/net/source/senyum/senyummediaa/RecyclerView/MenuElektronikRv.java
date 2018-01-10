@@ -9,10 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import net.source.senyum.senyummediaa.Activity.Pemesanan;
-import net.source.senyum.senyummediaa.Data.DataElektronik;
 import net.source.senyum.senyummediaa.Data.DataMenuProduct;
 import net.source.senyum.senyummediaa.FunctionClick.ItemClickListener;
 import net.source.senyum.senyummediaa.R;

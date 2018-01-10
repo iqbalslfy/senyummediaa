@@ -9,10 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import net.source.senyum.senyummediaa.Activity.Pemesanan;
-import net.source.senyum.senyummediaa.Data.DataPeralatanKantor;
+import net.source.senyum.senyummediaa.Data.DataMenuProduct;
 import net.source.senyum.senyummediaa.FunctionClick.ItemClickListener;
 import net.source.senyum.senyummediaa.R;
 
@@ -25,18 +24,16 @@ import java.util.List;
 
 class MenuPeralatanKantorbHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
     public ImageView imageView;
-    public TextView textNamaToko,textHarga,textHargaSebPotongan;
+    public TextView txtJudul,txtHarga;
     private ItemClickListener itemClickListener;
 
     public MenuPeralatanKantorbHolder(View itemView) {
         super(itemView);
-        imageView = (ImageView)itemView.findViewById(R.id.img_toko);
-        textNamaToko = (TextView)itemView.findViewById(R.id.txtNamaToko);
-        textHarga = itemView.findViewById(R.id.txtHarga);
-        textHargaSebPotongan = itemView.findViewById(R.id.txtHargaSebPotongan);
+        imageView = itemView.findViewById(R.id.ImgMenuProduct);
+        txtJudul = itemView.findViewById(R.id.txtJudulProduct);
+        txtHarga = itemView.findViewById(R.id.txtHargaProduct);
 
         itemView.setOnClickListener(this);
-        strikeThroughText(textHargaSebPotongan);
     }
 
     private void strikeThroughText(TextView price){
@@ -58,33 +55,31 @@ class MenuPeralatanKantorbHolder extends RecyclerView.ViewHolder implements View
     }
 }
 public class MenuPeralatanKantor extends RecyclerView.Adapter<MenuPeralatanKantorbHolder>{
-    private List<DataPeralatanKantor> menuPeralatan = new ArrayList<>();
+    private List<DataMenuProduct> itemProduct = new ArrayList<>();
     private Context context;
 
-    public MenuPeralatanKantor(List<DataPeralatanKantor> menuPeralatan, Context context) {
-        this.menuPeralatan = menuPeralatan;
+    public MenuPeralatanKantor(List<DataMenuProduct> itemProduct, Context context) {
+        this.itemProduct = itemProduct;
         this.context = context;
     }
 
     @Override
     public MenuPeralatanKantorbHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_stationery, parent, false);
+        View view = inflater.inflate(R.layout.item_menu_product, parent, false);
         return new MenuPeralatanKantorbHolder(view);
 
     }
 
     @Override
     public void onBindViewHolder(final MenuPeralatanKantorbHolder holder, int position) {
-        holder.imageView.setImageResource(menuPeralatan.get(position).getGambar());
-        holder.textNamaToko.setText(menuPeralatan.get(position).getNama_toko());
-        holder.textHarga.setText(menuPeralatan.get(position).getHarga());
-        holder.textHargaSebPotongan.setText(menuPeralatan.get(position).getHargasebpotongan());
-
+        holder.imageView.setImageResource(itemProduct.get(position).getGambar());
+        holder.txtJudul.setText(itemProduct.get(position).getJudul());
+        holder.txtHarga.setText(itemProduct.get(position).getHarga());
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int pos, boolean isLongClick) {
-                Toast.makeText(context, ""+ menuPeralatan.get(pos).getNama_toko(),Toast.LENGTH_SHORT).show();
+
                 context.startActivity(new Intent(context, Pemesanan.class));
             }
         });
@@ -92,6 +87,6 @@ public class MenuPeralatanKantor extends RecyclerView.Adapter<MenuPeralatanKanto
 
     @Override
     public int getItemCount() {
-        return menuPeralatan.size();
+        return itemProduct.size();
     }
 }

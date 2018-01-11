@@ -1,9 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
     tools:context="net.source.senyum.senyummediaa.Activity.Pemesanan">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/ImgPemesanan"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/papuma"
+            android:scaleType="centerCrop"
+            />
+        <TextView
+            android:id="@+id/txtJudulPemesanan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ImgPemesanan"
+            android:textSize="20dp"
+            android:text="@string/bottom_sheet_behavior"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txtHargaPemesanan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtJudulPemesanan"
+            android:textColor="@color/transparant_gray"
+            android:text="@string/harga"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textStyle="bold"
+            android:textSize="17dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            />
+
+        <android.support.v7.widget.AppCompatRatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtHargaPemesanan"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:numStars="5"
+            android:rating="3.5"
+            android:stepSize="0.5"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </RelativeLayout>
+</LinearLayout>

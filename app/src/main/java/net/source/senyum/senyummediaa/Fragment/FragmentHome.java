@@ -52,7 +52,7 @@ public class FragmentHome extends Fragment {
     LinearLayout SliderDots;
     private int dotcounts;
     private ImageView[] dots;
-
+    TextView txtCari;
     RecyclerView rvPencarianPopuler,
             rvFlashSale,
             rvBrand,
@@ -99,11 +99,11 @@ public class FragmentHome extends Fragment {
         kategori();
         rekomendasi();
 
-        TextView txtCari = view.findViewById(R.id.txtCari);
+        txtCari = view.findViewById(R.id.txtCari);
         txtCari.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(getContext(), PencarianActivity.class));
+                startActivity(new Intent(getContext(), PencarianActivity.class));
                 Toast.makeText(getActivity(), "tes!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -294,30 +294,6 @@ public class FragmentHome extends Fragment {
         timer.cancel();
         timer.purge();
     }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item_design_pencarian_populer) {
-//        int id = item_design_pencarian_populer.getItemId();
-//
-//        if (id == R.id.basket) {
-//            startActivity(new Intent(getContext(), BasketActivity.class));
-//        }
-//
-//        return super.onOptionsItemSelected(item_design_pencarian_populer);
-//    }
-//
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        super.onCreateOptionsMenu(menu, inflater);
-//        inflater.inflate(R.menu.menu_basket, menu);
-//    }
-
-    //    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_basket, menu);
-//
-//        return true;
-//    }
 
 
 }

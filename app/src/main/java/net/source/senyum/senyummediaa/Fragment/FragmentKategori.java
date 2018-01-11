@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import net.source.senyum.senyummediaa.R;
 
@@ -25,6 +27,7 @@ public class FragmentKategori extends Fragment {
     private Toolbar toolbar;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private TextView textView;
 
     public FragmentKategori() {
     }
@@ -38,6 +41,20 @@ public class FragmentKategori extends Fragment {
         tabLayout = view.findViewById(R.id.tabLayout);
         viewPager = view.findViewById(R.id.viewpager);
 
+        toolbar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "tes!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        textView = view.findViewById(R.id.txtSearch);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "tes!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
         tabLayout.setupWithViewPager(viewPager);

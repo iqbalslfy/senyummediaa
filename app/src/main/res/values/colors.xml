@@ -8,5 +8,6 @@
     <color name="silver">#ecf0f1</color>
     <color name="transparent">#c5000000</color>
     <color name="background">#6ac7c7c7</color>
+    <color name="belizeHole">#2980b9</color>
     <color name="transparant_gray">#70000000</color>
 </resources>
